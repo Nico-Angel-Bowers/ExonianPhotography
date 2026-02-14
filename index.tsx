@@ -16,93 +16,73 @@ interface Photographer {
   id: string;
   name: string;
   description: string;
-  isPlaceholder?: boolean;
+  collectionTitle: string;
+  images: CollectionImage[];
 }
 
-// --- Static Data ---
-const JAZZ_CAFE_IMAGES: CollectionImage[] = [
-  {
-    url: 'https://i.imgur.com/1ty6NW1.jpeg',
-    title: 'The Blue Note',
-    description: 'Capturing the deep, atmospheric hues of the opening set.',
-    size: 'large',
-    offset: 'none'
-  },
-  {
-    url: 'https://i.imgur.com/OSszIsd.jpeg',
-    title: 'Rhythm & Bloom',
-    description: 'A study of movement and floral accents in the venue.',
-    size: 'medium',
-    offset: 'top'
-  },
-  {
-    url: 'https://i.imgur.com/7cTUn90.jpeg',
-    title: 'Intimate Echoes',
-    description: 'The subtle resonance of the acoustics in a quiet corner.',
-    size: 'medium',
-    offset: 'bottom'
-  },
-  {
-    url: 'https://i.imgur.com/QB54ZGN.jpeg',
-    title: 'Brass Textures',
-    description: 'Detailed focus on the instruments that define the night.',
-    size: 'small',
-    offset: 'none'
-  },
-  {
-    url: 'https://i.imgur.com/miov8UT.jpeg',
-    title: 'The Collective Voice',
-    description: 'Unity through improvisation and shared presence.',
-    size: 'large',
-    offset: 'none'
-  },
-  {
-    url: 'https://i.imgur.com/9x8EKeN.jpeg',
-    title: 'Shadow Play',
-    description: 'Tracing the silhouettes against the stage lights.',
-    size: 'medium',
-    offset: 'top'
-  },
-  {
-    url: 'https://i.imgur.com/1qjhaId.jpeg',
-    title: 'Strings Attached',
-    description: 'The delicate tension of a performance in progress.',
-    size: 'medium',
-    offset: 'bottom'
-  },
-  {
-    url: 'https://i.imgur.com/7ZpjSMX.jpeg',
-    title: 'Cafe Noir',
-    description: 'High-contrast moments from the edge of the stage.',
-    size: 'large',
-    offset: 'none'
-  },
-  {
-    url: 'https://i.imgur.com/4evqYe8.jpeg',
-    title: 'The Final Set',
-    description: 'A lasting impression as the lights begin to dim.',
-    size: 'small',
-    offset: 'none'
-  }
+// --- Static Data: Collections ---
+
+const NICO_BOWERS_IMAGES: CollectionImage[] = [
+  { url: 'https://i.imgur.com/1ty6NW1.jpeg', title: 'The Blue Note', description: 'Atmospheric opening sets.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/OSszIsd.jpeg', title: 'Rhythm & Bloom', description: 'Floral accents in transit.', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/7cTUn90.jpeg', title: 'Intimate Echoes', description: 'Resonance in the quiet corners.', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/QB54ZGN.jpeg', title: 'Brass Textures', description: 'Focus on defined instruments.', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/miov8UT.jpeg', title: 'The Collective', description: 'Unity through improvisation.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/9x8EKeN.jpeg', title: 'Shadow Play', description: 'Silhouettes against the stage.', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/1qjhaId.jpeg', title: 'Strings Attached', description: 'Delicate performance tension.', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/7ZpjSMX.jpeg', title: 'Cafe Noir', description: 'High-contrast edge moments.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/4evqYe8.jpeg', title: 'The Final Set', description: 'Lasting impressions.', size: 'small', offset: 'none' }
+];
+
+const PAXTON_HOPE_IMAGES: CollectionImage[] = [
+  { url: 'https://i.imgur.com/EvHoJPa.png', title: 'Static Noise', description: 'Abstract observations.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/nI3GHU2.jpeg', title: 'Coastal Fade', description: 'Horizon studies.', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/riQAZZX.jpeg', title: 'Urban Geometry', description: 'Lines in the wild.', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/zNiUkhz.jpeg', title: 'Light Leak', description: 'Natural interference.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/zeKbpZD.jpeg', title: 'Soft Focus', description: 'Emotional depth.', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/8W8N4Bf.jpeg', title: 'Industrial Still', description: 'The beauty of utility.', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/yws7S0L.jpeg', title: 'Vantage Point', description: 'Elevated perspective.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/6r9vfwo.jpeg', title: 'Monochrome Drift', description: 'Tonal variations.', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/nAIEut2.jpeg', title: 'Structure I', description: 'Architectural honesty.', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/fFbzSUW.jpeg', title: 'Structure II', description: 'Form and function.', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/HdyVPeN.jpeg', title: 'Structure III', description: 'Concluding the study.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/1GVxJDQ.jpeg', title: 'The Last Glimpse', description: 'Ending the archive.', size: 'small', offset: 'none' }
+];
+
+const FLYNN_KOHUT_IMAGES: CollectionImage[] = [
+  { url: 'https://i.imgur.com/ZAmV1aL.jpeg', title: 'Quiet Rebellion', description: 'A moment of stillness.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/nUMubKh.jpeg', title: 'Hidden Valley', description: 'Nature’s secrecy.', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/c2DsJs0.jpeg', title: 'Shattered Mirror', description: 'Reflective chaos.', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/ys6wNFG.jpeg', title: 'The Watcher', description: 'Silent observation.', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/nz8SRth.jpeg', title: 'Woven Threads', description: 'Connecting life.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/T4tkbCW.jpeg', title: 'Dusk Patrol', description: 'Guarding the peace.', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/cWFC5i7.jpeg', title: 'Verdant Hush', description: 'Greens in silence.', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/pzRadjb.jpeg', title: 'Stone Cold', description: 'Solid foundations.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/wtIIMNI.jpeg', title: 'Gilded Cage', description: 'Beautiful restraint.', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/ZxyzUZ8.jpeg', title: 'Final Resolution', description: 'The search for peace.', size: 'medium', offset: 'top' }
 ];
 
 const FEATURED_PHOTOGRAPHERS: Photographer[] = [
   {
     id: 'nico-bowers',
     name: 'Nico Bowers',
-    description: 'Focused on creating calm, intentional images that emphasize atmosphere, composition, and honesty. Work centers on observation and presence rather than spectacle.'
+    description: 'Focused on creating calm, intentional images that emphasize atmosphere, composition, and honesty. Seeking the quiet moments between the spectacle.',
+    collectionTitle: 'Jazz Cafe Night',
+    images: NICO_BOWERS_IMAGES
   },
   {
     id: 'paxton-hope',
     name: 'Paxton Hope',
-    description: 'Coming Soon',
-    isPlaceholder: true,
+    description: 'An exploration of the ephemeral and the discarded. His work captures the fleeting beauty found in industrial decay and natural transitions.',
+    collectionTitle: 'The Transient Archive',
+    images: PAXTON_HOPE_IMAGES
   },
   {
-    id: 'isaiah-gibson',
-    name: 'Isaiah Gibson',
-    description: 'Coming Soon',
-    isPlaceholder: true,
+    id: 'flynn-kohut',
+    name: 'Flynn Kohut',
+    description: 'Flynn’s work is a direct response to modern dissonance. He captures scenes that demand a pause, finding profound peace in a world of hate.',
+    collectionTitle: 'Peace in a World of Hate',
+    images: FLYNN_KOHUT_IMAGES
   }
 ];
 
@@ -166,14 +146,14 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         <div className="max-w-screen-sm mx-auto space-y-8">
           <div className="space-y-2">
             <p className="text-[10px] uppercase tracking-[0.8em] text-gray-300">
-              New Hampshire Archive
+              Archive Registry
             </p>
-            <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400">Est. 2026</p>
+            <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400">Exeter • New Hampshire</p>
           </div>
-          <div className="flex justify-center gap-6 items-center opacity-40">
-             <div className="h-[1px] w-12 bg-gray-300"></div>
-             <p className="text-[9px] uppercase tracking-[0.2em] text-gray-500">© 2026 Nico Bowers. All Rights Reserved.</p>
-             <div className="h-[1px] w-12 bg-gray-300"></div>
+          <div className="flex justify-center gap-6 items-center opacity-30">
+             <div className="h-[1px] w-12 bg-gray-400"></div>
+             <p className="text-[9px] uppercase tracking-[0.2em] text-gray-600">© 2026 Nico Bowers Collective</p>
+             <div className="h-[1px] w-12 bg-gray-400"></div>
           </div>
         </div>
       </footer>
@@ -185,57 +165,49 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
 const Home: React.FC = () => (
   <section className="text-center reveal py-10">
-    <div className="mb-20 space-y-6">
-        <h2 className="text-sm font-medium uppercase tracking-[0.5em] text-gray-400">Catalogue</h2>
-        <div className="h-[1px] w-20 bg-black/10 mx-auto"></div>
+    <div className="mb-24 space-y-6">
+        <h2 className="text-[10px] font-medium uppercase tracking-[0.6em] text-gray-400">The Featured Archive</h2>
+        <div className="h-[1px] w-16 bg-black/10 mx-auto"></div>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-12 justify-items-center max-w-5xl mx-auto">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-16 justify-items-center max-w-6xl mx-auto">
       {FEATURED_PHOTOGRAPHERS.map((photographer) => (
-        photographer.isPlaceholder ? (
-          <div 
-            key={photographer.id}
-            className="group border border-gray-100 p-16 min-w-[260px] w-full flex items-center justify-center text-gray-200 text-[11px] uppercase tracking-[0.3em] select-none italic"
-          >
-            {photographer.name}
-          </div>
-        ) : (
-          <Link
-            key={photographer.id}
-            to={`/photographer/${photographer.id}`}
-            className="group border border-black/10 p-16 min-w-[260px] w-full text-[12px] uppercase tracking-[0.3em] text-black transition-all hover:bg-black hover:text-white flex items-center justify-center relative overflow-hidden"
-          >
-            <span className="relative z-10">{photographer.name}</span>
-            <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-500"></div>
-          </Link>
-        )
+        <Link
+          key={photographer.id}
+          to={`/photographer/${photographer.id}`}
+          className="group border border-black/5 p-20 min-w-[280px] w-full text-[12px] uppercase tracking-[0.4em] text-black transition-all hover:bg-black hover:text-white flex flex-col items-center justify-center relative overflow-hidden h-64"
+        >
+          <span className="relative z-10 text-center">{photographer.name}</span>
+          <span className="relative z-10 mt-4 text-[8px] tracking-[0.5em] text-gray-400 group-hover:text-white/40 opacity-0 group-hover:opacity-100 transition-all duration-700 uppercase">View Collection</span>
+          <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-[800ms] cubic-bezier(0.19, 1, 0.22, 1)"></div>
+        </Link>
       ))}
     </div>
   </section>
 );
 
 const About: React.FC = () => (
-  <section className="max-w-2xl mx-auto px-4 reveal space-y-20">
-    <header className="text-center space-y-4">
-        <h2 className="text-sm uppercase tracking-[0.6em] text-gray-300">Identity</h2>
-        <h3 className="text-4xl serif italic">Nico Bowers</h3>
+  <section className="max-w-2xl mx-auto px-4 reveal space-y-24">
+    <header className="text-center space-y-6">
+        <h2 className="text-[10px] uppercase tracking-[0.8em] text-gray-300">Curator Statement</h2>
+        <h3 className="text-5xl serif italic text-gray-900">Nico Bowers</h3>
     </header>
 
-    <div className="space-y-12 text-lg leading-[2] text-gray-700 font-light text-justify">
+    <div className="space-y-12 text-xl leading-[2] text-gray-700 font-light text-justify serif">
       <p>
         I am passionate about creating a space for freedom of expression through photography.
-        Based in <span className="text-black font-normal">Exeter, New Hampshire</span>, this archive began as a vessel to share 
+        Based in <span className="text-black font-normal not-italic">Exeter, New Hampshire</span>, this archive began as a vessel to share 
         visual narratives in a clean, intentional environment.
       </p>
 
       <p>
-        I believe in the quiet power of observation. My work seeks to find resonance in the mundane,
+        I believe in the quiet power of observation. My work—and the work of my collaborators—seeks to find resonance in the mundane,
         prioritizing atmosphere and composition over the noise of the spectacle. 
-        Nico’s Photography is designed to evolve into a collective platform for like-minded observers.
+        This platform is designed to evolve into a collective for like-minded observers.
       </p>
 
-      <div className="pt-10 border-t border-gray-50">
-          <p className="italic serif text-2xl text-gray-400 text-center leading-relaxed">
+      <div className="pt-12 border-t border-gray-100 text-center">
+          <p className="italic text-2xl text-gray-400 leading-relaxed max-w-md mx-auto">
             "Seeking the quiet moments between the spectacle."
           </p>
       </div>
@@ -244,33 +216,33 @@ const About: React.FC = () => (
 );
 
 const Contact: React.FC = () => (
-  <section className="max-w-2xl mx-auto px-4 reveal text-center py-20">
-    <div className="space-y-6 mb-20">
-        <h2 className="text-sm uppercase tracking-[0.6em] text-gray-300">Correspondence</h2>
-        <h3 className="text-4xl serif italic">Get in touch</h3>
+  <section className="max-w-2xl mx-auto px-4 reveal text-center py-24">
+    <div className="space-y-6 mb-24">
+        <h2 className="text-[10px] uppercase tracking-[0.8em] text-gray-300">Correspondence</h2>
+        <h3 className="text-5xl serif italic">Inquiries</h3>
     </div>
 
-    <div className="space-y-16">
-      <p className="text-lg text-gray-500 font-light leading-relaxed max-w-md mx-auto">
-        For limited edition prints, collaborative projects, or archival inquiries, 
-        please use the channels below.
+    <div className="space-y-20">
+      <p className="text-xl text-gray-500 font-light leading-relaxed max-w-lg mx-auto serif italic">
+        For archival prints, collaborative editorial projects, or collection inquiries, 
+        please reach out via the channels below.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 pt-12 border-t border-gray-100">
-        <div className="space-y-2">
-          <span className="block text-[10px] uppercase tracking-[0.4em] text-gray-300">Digital Mail</span>
-          <a href="mailto:nbowers@exeter.edu" className="text-lg text-black hover:opacity-40 transition-opacity border-b border-black/5 pb-1">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-16 pt-16 border-t border-gray-50">
+        <div className="space-y-3">
+          <span className="block text-[9px] uppercase tracking-[0.5em] text-gray-400">Digital Archive</span>
+          <a href="mailto:nbowers@exeter.edu" className="text-lg text-black hover:opacity-40 transition-opacity font-light tracking-wide border-b border-black/5 pb-2">
             nbowers@exeter.edu
           </a>
         </div>
 
-        <div className="space-y-2">
-          <span className="block text-[10px] uppercase tracking-[0.4em] text-gray-300">Social Archive</span>
+        <div className="space-y-3">
+          <span className="block text-[9px] uppercase tracking-[0.5em] text-gray-400">Social Index</span>
           <a 
             href="https://www.instagram.com/nicobowers2010/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="text-lg text-black hover:opacity-40 transition-opacity border-b border-black/5 pb-1"
+            className="text-lg text-black hover:opacity-40 transition-opacity font-light tracking-wide border-b border-black/5 pb-2"
           >
             @nicobowers2010
           </a>
@@ -284,82 +256,82 @@ const PhotographerDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const photographer = FEATURED_PHOTOGRAPHERS.find(p => p.id === id);
 
-  if (!photographer || photographer.isPlaceholder) {
+  if (!photographer) {
     return <Navigate to="/" />;
   }
 
   return (
     <div className="reveal">
-      <section className="max-w-4xl mx-auto mb-48 text-center">
-        <div className="mb-12">
-            <span className="text-[10px] uppercase tracking-[0.8em] text-gray-400 block mb-6">Archive Plate Series 01</span>
-            <h2 className="text-7xl md:text-[10rem] font-light uppercase tracking-tighter mb-8 leading-[0.85] text-black">
+      <section className="max-w-5xl mx-auto mb-56 text-center">
+        <div className="mb-16">
+            <span className="text-[10px] uppercase tracking-[1em] text-gray-300 block mb-10">Selected Works // Vol I</span>
+            <h2 className="text-8xl md:text-[11rem] font-light uppercase tracking-tighter mb-10 leading-[0.8] text-black">
               {photographer.name.split(' ')[0]}<br/>{photographer.name.split(' ')[1]}
             </h2>
         </div>
         
-        <div className="flex items-center justify-center gap-8 mb-20">
-            <div className="h-[1px] w-16 bg-black/10"></div>
-            <span className="text-[11px] uppercase tracking-[0.4em] font-medium text-gray-300 italic serif">Jazz Cafe Night</span>
-            <div className="h-[1px] w-16 bg-black/10"></div>
+        <div className="flex items-center justify-center gap-10 mb-20">
+            <div className="h-[1px] w-20 bg-black/10"></div>
+            <span className="text-[12px] uppercase tracking-[0.5em] font-medium text-gray-400 italic serif">{photographer.collectionTitle}</span>
+            <div className="h-[1px] w-20 bg-black/10"></div>
         </div>
 
-        <p className="text-xl md:text-3xl leading-relaxed text-gray-500 font-light max-w-2xl mx-auto italic serif">
+        <p className="text-2xl md:text-3xl leading-relaxed text-gray-500 font-light max-w-2xl mx-auto italic serif px-6">
           "{photographer.description}"
         </p>
       </section>
 
-      <section className="space-y-64 mb-80">
-        {JAZZ_CAFE_IMAGES.map((image, index) => {
+      <section className="space-y-[20rem] mb-96">
+        {photographer.images.map((image, index) => {
           const containerClasses = `relative flex flex-col ${
             image.size === 'large' ? 'md:w-full' : 
-            image.size === 'medium' ? 'md:w-4/5 mx-auto' : 
-            'md:w-3/5 mx-auto'
+            image.size === 'medium' ? 'md:w-[85%] mx-auto' : 
+            'md:w-[65%] mx-auto'
           } ${
-            image.offset === 'top' ? 'md:-mt-40' : 
-            image.offset === 'bottom' ? 'md:mt-40' : ''
+            image.offset === 'top' ? 'md:-mt-64' : 
+            image.offset === 'bottom' ? 'md:mt-64' : ''
           } ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'}`;
 
           return (
             <div key={index} className={containerClasses}>
-              <div className="group relative overflow-hidden bg-gray-50 w-full shadow-2xl shadow-black/[0.02]">
+              <div className="group relative overflow-hidden bg-gray-50 w-full shadow-2xl shadow-black/[0.03]">
                 <img 
                   src={image.url} 
                   alt={image.title}
                   loading="lazy"
-                  className="w-full h-auto grayscale brightness-[1.03] contrast-[1.02] transition-all duration-[3000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:grayscale-0 group-hover:scale-[1.05]"
+                  className="w-full h-auto grayscale brightness-[1.03] contrast-[1.01] transition-all duration-[3000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:grayscale-0 group-hover:scale-[1.04]"
                 />
                 
-                <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-12 pointer-events-none">
-                   <div className="translate-y-6 group-hover:translate-y-0 transition-transform duration-1000 ease-out">
-                      <h4 className="text-white text-4xl serif italic mb-3 shadow-sm">{image.title}</h4>
-                      <p className="text-white/80 text-[10px] uppercase tracking-[0.5em] font-medium">{image.description}</p>
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-16 pointer-events-none">
+                   <div className="translate-y-8 group-hover:translate-y-0 transition-transform duration-[1200ms] ease-out">
+                      <h4 className="text-white text-5xl serif italic mb-4 drop-shadow-lg">{image.title}</h4>
+                      <p className="text-white/90 text-[11px] uppercase tracking-[0.6em] font-medium drop-shadow-sm">{image.description}</p>
                    </div>
                 </div>
               </div>
 
-              <div className={`mt-12 max-w-sm ${index % 2 === 0 ? 'text-left' : 'text-right md:ml-auto'}`}>
-                <div className="flex items-center gap-4 mb-4 text-[9px] uppercase tracking-[0.6em] text-gray-300">
-                    <span className="font-bold text-black/20">0{index + 1}</span>
-                    <div className="h-[1px] w-8 bg-gray-100"></div>
-                    <span>Archive Entry</span>
+              <div className={`mt-16 max-w-sm ${index % 2 === 0 ? 'text-left pl-2' : 'text-right md:ml-auto pr-2'}`}>
+                <div className={`flex items-center gap-6 mb-6 text-[10px] uppercase tracking-[0.8em] text-gray-300 ${index % 2 !== 0 && 'flex-row-reverse'}`}>
+                    <span className="font-bold text-black/30">0{index + 1}</span>
+                    <div className="h-[1px] w-12 bg-gray-200"></div>
+                    <span className="opacity-60">Plate</span>
                 </div>
-                <p className="text-base text-gray-900 font-light uppercase tracking-[0.2em]">{image.title}</p>
+                <p className="text-lg text-gray-900 font-light uppercase tracking-[0.3em] serif italic">{image.title}</p>
               </div>
             </div>
           );
         })}
       </section>
 
-      <section className="max-w-2xl mx-auto text-center py-40 border-t border-gray-100">
-          <div className="space-y-12">
-            <h3 className="text-4xl serif italic text-black">Editorial Archive</h3>
-            <p className="text-lg text-gray-400 tracking-wide leading-relaxed font-light italic">
-              "Each image is a silent witness to a moment that will never repeat."
+      <section className="max-w-3xl mx-auto text-center py-56 border-t border-gray-100">
+          <div className="space-y-16">
+            <h3 className="text-5xl serif italic text-gray-900">Collection Inquiry</h3>
+            <p className="text-xl text-gray-400 tracking-wide leading-[2] font-light italic serif max-w-xl mx-auto">
+              "To capture is to preserve a silence that speaks louder than the world around it."
             </p>
-            <div className="pt-8">
-                <Link to="/contact" className="inline-block border-b border-black py-4 px-2 text-[11px] uppercase tracking-[0.5em] hover:text-gray-400 hover:border-gray-200 transition-all duration-700">
-                    Inquire for Access
+            <div className="pt-12">
+                <Link to="/contact" className="inline-block border-b border-black/20 py-6 px-12 text-[11px] uppercase tracking-[0.6em] hover:text-gray-400 hover:border-gray-200 transition-all duration-1000">
+                    Request Archive Entry
                 </Link>
             </div>
           </div>
