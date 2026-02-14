@@ -176,6 +176,17 @@ const Home: React.FC = () => (
         </p>
     </div>
 
+    <div className="mb-32 space-y-10 max-w-2xl mx-auto">
+        <p className="text-xl md:text-2xl text-gray-500 font-light leading-relaxed italic serif">
+          A space to share campus events through your own lens.
+        </p>
+        <div className="pt-4">
+          <Link to="/contact" className="inline-block border border-black/10 px-12 py-4 text-[10px] uppercase tracking-[0.5em] text-black hover:bg-black hover:text-white transition-all duration-700">
+            Submit Here
+          </Link>
+        </div>
+    </div>
+
     <div className="mb-24 space-y-6 pt-20 border-t border-gray-100 max-w-sm mx-auto">
         <h2 className="text-[10px] font-medium uppercase tracking-[0.8em] text-gray-400">Monthly Selection</h2>
         <div className="h-[1px] w-16 bg-black/10 mx-auto"></div>
