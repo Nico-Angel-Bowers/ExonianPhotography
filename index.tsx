@@ -106,8 +106,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#fcfcfc]">
-      <header className="py-6 px-8 sticky top-0 bg-[#fcfcfc]/95 backdrop-blur-md z-50 border-b border-gray-100/50">
-        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <header className="py-4 px-8 sticky top-0 bg-[#fcfcfc]/95 backdrop-blur-md z-50 border-b border-gray-100/50">
+        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4">
           <Link to="/" className="group text-center md:text-left">
             <h1 className="text-xl md:text-2xl font-light uppercase tracking-[0.5em] transition-all group-hover:opacity-60 leading-tight">
               Exonian Photography
@@ -117,7 +117,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </p>
           </Link>
 
-          <nav className="flex gap-8 md:gap-12">
+          <nav className="flex gap-6 md:gap-12 mt-2 md:mt-0">
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.path}
@@ -138,14 +138,14 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
       </header>
 
-      <main className="flex-grow py-4 px-8">
+      <main className="flex-grow py-2 px-8">
         <div className="max-w-screen-xl mx-auto">
           {children}
         </div>
       </main>
 
-      <footer className="py-8 px-8 border-t border-gray-50 text-center bg-white">
-        <div className="max-w-screen-sm mx-auto space-y-4">
+      <footer className="py-6 px-8 border-t border-gray-50 text-center bg-white">
+        <div className="max-w-screen-sm mx-auto space-y-2">
           <div className="space-y-1">
             <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-medium">Exeter • NH</p>
           </div>
@@ -163,16 +163,16 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 // --- Page Components ---
 
 const Home: React.FC = () => (
-  <section className="text-center reveal py-4 w-full flex flex-col items-center justify-center">
-    <div className="mb-6 flex flex-col items-center justify-center w-full">
+  <section className="text-center reveal py-2 w-full flex flex-col items-center justify-center">
+    <div className="mb-4 flex flex-col items-center justify-center w-full">
         <h1 className="text-5xl md:text-[8rem] lg:text-[10rem] serif font-light uppercase tracking-tighter leading-[0.85] text-center w-full px-4 overflow-visible">
           <span className="block">Exonian</span>
-          <span className="block">Photography</span>
+          <span className="block relative -left-[0.03em] md:left-0">Photography</span>
         </h1>
     </div>
 
-    <div className="mb-8 space-y-4 max-w-2xl mx-auto flex flex-col items-center justify-center">
-        <p className="text-lg md:text-xl text-gray-500 font-light leading-relaxed italic serif text-center px-6">
+    <div className="mb-6 space-y-3 max-w-2xl mx-auto flex flex-col items-center justify-center">
+        <p className="text-base md:text-xl text-gray-500 font-light leading-relaxed italic serif text-center px-6">
           A place to share all campus events through your own lense.
         </p>
         <div className="pt-1">
@@ -182,17 +182,17 @@ const Home: React.FC = () => (
         </div>
     </div>
 
-    <div className="mb-8 space-y-3 pt-4 border-t border-gray-100 max-w-md mx-auto flex flex-col items-center justify-center">
+    <div className="mb-6 space-y-2 pt-4 border-t border-gray-100 max-w-md mx-auto flex flex-col items-center justify-center">
         <h2 className="text-[9px] font-medium uppercase tracking-[0.6em] text-gray-400 text-center">This month's photographers</h2>
         <div className="h-[1px] w-12 bg-black/10 mx-auto"></div>
     </div>
 
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 justify-items-center max-w-6xl mx-auto w-full">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center max-w-6xl mx-auto w-full">
       {FEATURED_PHOTOGRAPHERS.map((photographer) => (
         <Link
           key={photographer.id}
           to={`/photographer/${photographer.id}`}
-          className="group border border-black/5 p-8 min-w-[260px] w-full text-[11px] uppercase tracking-[0.3em] text-black transition-all hover:bg-black hover:text-white flex flex-col items-center justify-center relative overflow-hidden h-48 md:h-56 shadow-sm hover:shadow-xl hover:shadow-black/10"
+          className="group border border-black/5 p-6 min-w-[260px] w-full text-[11px] uppercase tracking-[0.3em] text-black transition-all hover:bg-black hover:text-white flex flex-col items-center justify-center relative overflow-hidden h-40 md:h-56 shadow-sm hover:shadow-xl hover:shadow-black/10"
         >
           <span className="relative z-10 text-center font-light text-sm tracking-[0.4em]">{photographer.name}</span>
           <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-[800ms] cubic-bezier(0.19, 1, 0.22, 1)"></div>
@@ -203,7 +203,7 @@ const Home: React.FC = () => (
 );
 
 const About: React.FC = () => (
-  <section className="max-w-3xl mx-auto px-4 reveal space-y-8 py-10">
+  <section className="max-w-3xl mx-auto px-4 reveal space-y-6 py-6">
     <header className="text-center space-y-4">
         <h2 className="text-[9px] uppercase tracking-[0.6em] text-gray-300">Mission Statement</h2>
         <h3 className="text-4xl md:text-5xl serif italic text-gray-900">Exonian Photography</h3>
@@ -219,12 +219,12 @@ const About: React.FC = () => (
 );
 
 const Contact: React.FC = () => (
-  <section className="max-w-2xl mx-auto px-4 reveal text-center py-10">
-    <div className="mb-10">
+  <section className="max-w-2xl mx-auto px-4 reveal text-center py-6">
+    <div className="mb-8">
         <h3 className="text-4xl md:text-5xl serif italic text-gray-900">Contact Nico Bowers</h3>
     </div>
 
-    <div className="space-y-12">
+    <div className="space-y-8">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-gray-50">
         <div className="space-y-2">
           <span className="block text-[8px] uppercase tracking-[0.4em] text-gray-400">Photographer</span>
@@ -259,17 +259,17 @@ const PhotographerDetail: React.FC = () => {
 
   return (
     <div className="reveal">
-      <section className="max-w-5xl mx-auto mb-10 text-center">
-        <div className="mb-6">
-            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-4">Exonian Archive // {id === 'nico-bowers' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : 'VOL III'}</span>
-            <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-4 leading-[0.85] text-black text-center">
+      <section className="max-w-5xl mx-auto mb-6 text-center">
+        <div className="mb-4">
+            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-2">Exonian Archive // {id === 'nico-bowers' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : 'VOL III'}</span>
+            <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
               <span className="block">{photographer.name.split(' ')[0]}</span>
               <span className="block">{photographer.name.split(' ')[1]}</span>
             </h2>
         </div>
         
         {photographer.collectionTitle && (
-          <div className="flex items-center justify-center gap-6 mb-6">
+          <div className="flex items-center justify-center gap-6 mb-4">
               <div className="h-[1px] w-12 bg-black/10"></div>
               <span className="text-[11px] uppercase tracking-[0.4em] font-medium text-gray-400 italic serif">{photographer.collectionTitle}</span>
               <div className="h-[1px] w-12 bg-black/10"></div>
@@ -277,35 +277,35 @@ const PhotographerDetail: React.FC = () => {
         )}
       </section>
 
-      <section className="space-y-[2.5rem] mb-[4rem]">
+      <section className="space-y-2 mb-8">
         {photographer.images.map((image, index) => {
           const containerClasses = `relative flex flex-col ${
             image.size === 'large' ? 'md:w-full' : 
             image.size === 'medium' ? 'md:w-[80%] mx-auto' : 
             'md:w-[55%] mx-auto'
-          } ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'}`;
+          } items-center`;
 
           return (
             <div key={index} className={containerClasses}>
-              <div className="group relative overflow-hidden bg-gray-50 w-full shadow-lg shadow-black/[0.02]">
+              <div className="group relative overflow-hidden bg-gray-50 w-full shadow-md">
                 <img 
                   src={image.url} 
                   alt={`Archival Plate ${index + 1}`}
                   loading="lazy"
-                  className="w-full h-auto grayscale brightness-[1.02] contrast-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:grayscale-0 group-hover:scale-[1.03]"
+                  className="w-full h-auto grayscale brightness-[1.02] contrast-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:grayscale-0 group-hover:scale-[1.02]"
                 />
                 
-                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-6 pointer-events-none">
-                   <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-[800ms] ease-out">
-                      <h4 className="text-white text-3xl serif italic drop-shadow-lg">0{index + 1}</h4>
+                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-4 pointer-events-none">
+                   <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-[800ms] ease-out">
+                      <h4 className="text-white text-2xl serif italic drop-shadow-lg">0{index + 1}</h4>
                    </div>
                 </div>
               </div>
 
-              <div className={`mt-3 max-w-sm ${index % 2 === 0 ? 'text-left pl-2' : 'text-right md:ml-auto pr-2'}`}>
-                <div className={`flex items-center gap-2 mb-1 text-[8px] uppercase tracking-[0.4em] text-gray-300 ${index % 2 !== 0 && 'flex-row-reverse'}`}>
+              <div className="mt-2 text-center w-full">
+                <div className="flex items-center justify-center gap-2 mb-1 text-[8px] uppercase tracking-[0.4em] text-gray-300">
                     <span className="font-bold text-black/10">0{index + 1}</span>
-                    <div className="h-[1px] w-6 bg-gray-100"></div>
+                    <div className="h-[1px] w-4 bg-gray-100"></div>
                     <span className="opacity-30">Entry</span>
                 </div>
               </div>
@@ -314,10 +314,10 @@ const PhotographerDetail: React.FC = () => {
         })}
       </section>
 
-      <section className="max-w-3xl mx-auto text-center py-10 border-t border-gray-100">
+      <section className="max-w-3xl mx-auto text-center py-6 border-t border-gray-100">
           <div className="space-y-4">
             <div className="pt-2">
-                <Link to="/contact" className="inline-block border-b border-black/20 py-4 px-12 text-[10px] uppercase tracking-[0.4em] hover:text-gray-400 hover:border-gray-200 transition-all duration-1000">
+                <Link to="/contact" className="inline-block border-b border-black/20 py-2 px-12 text-[10px] uppercase tracking-[0.4em] hover:text-gray-400 hover:border-gray-200 transition-all duration-1000">
                     Contact Nico Bowers
                 </Link>
             </div>
