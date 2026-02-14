@@ -138,8 +138,8 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
         </div>
       </header>
 
-      <main className="flex-grow py-2 px-8">
-        <div className="max-w-screen-xl mx-auto">
+      <main className="flex-grow flex flex-col py-2 px-8">
+        <div className="max-w-screen-xl mx-auto w-full flex-grow flex flex-col">
           {children}
         </div>
       </main>
@@ -163,47 +163,51 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
 // --- Page Components ---
 
 const Home: React.FC = () => (
-  <section className="text-center reveal py-2 w-full flex flex-col items-center justify-center">
-    <div className="mb-4 flex flex-col items-center justify-center w-full">
-        <h1 className="text-5xl md:text-[8rem] lg:text-[10rem] serif font-light uppercase tracking-tighter leading-[0.85] text-center w-full px-4 overflow-visible">
-          <span className="block">Exonian</span>
-          <span className="block relative -left-[0.03em] md:left-0">Photography</span>
-        </h1>
+  <section className="text-center reveal py-2 w-full flex-grow flex flex-col items-center justify-between">
+    <div className="flex-grow flex flex-col items-center justify-center w-full">
+      <div className="mb-6 flex flex-col items-center justify-center w-full">
+          <h1 className="text-6xl md:text-[8rem] lg:text-[10rem] serif font-light uppercase tracking-tighter leading-[0.85] text-center w-full px-4 overflow-visible">
+            <span className="block">Exonian</span>
+            <span className="block">Photography</span>
+          </h1>
+      </div>
+
+      <div className="mb-8 space-y-4 max-w-2xl mx-auto flex flex-col items-center justify-center">
+          <p className="text-base md:text-xl text-gray-500 font-light leading-relaxed italic serif text-center px-6">
+            A place to share all campus events through your own lense.
+          </p>
+          <div className="pt-2">
+            <Link to="/contact" className="inline-block border border-black/10 px-10 py-3 text-[9px] uppercase tracking-[0.4em] text-black hover:bg-black hover:text-white transition-all duration-700">
+              Submit Here
+            </Link>
+          </div>
+      </div>
     </div>
 
-    <div className="mb-6 space-y-3 max-w-2xl mx-auto flex flex-col items-center justify-center">
-        <p className="text-base md:text-xl text-gray-500 font-light leading-relaxed italic serif text-center px-6">
-          A place to share all campus events through your own lense.
-        </p>
-        <div className="pt-1">
-          <Link to="/contact" className="inline-block border border-black/10 px-10 py-3 text-[9px] uppercase tracking-[0.4em] text-black hover:bg-black hover:text-white transition-all duration-700">
-            Submit Here
+    <div className="w-full mt-12 pb-8">
+      <div className="mb-6 space-y-2 pt-6 border-t border-gray-100 max-w-md mx-auto flex flex-col items-center justify-center">
+          <h2 className="text-[9px] font-medium uppercase tracking-[0.6em] text-gray-400 text-center">This month's photographers</h2>
+          <div className="h-[1px] w-12 bg-black/10 mx-auto"></div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center max-w-6xl mx-auto w-full">
+        {FEATURED_PHOTOGRAPHERS.map((photographer) => (
+          <Link
+            key={photographer.id}
+            to={`/photographer/${photographer.id}`}
+            className="group border border-black/5 p-6 min-w-[260px] w-full text-[11px] uppercase tracking-[0.3em] text-black transition-all hover:bg-black hover:text-white flex flex-col items-center justify-center relative overflow-hidden h-40 md:h-56 shadow-sm hover:shadow-xl hover:shadow-black/10"
+          >
+            <span className="relative z-10 text-center font-light text-sm tracking-[0.4em]">{photographer.name}</span>
+            <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-[800ms] cubic-bezier(0.19, 1, 0.22, 1)"></div>
           </Link>
-        </div>
-    </div>
-
-    <div className="mb-6 space-y-2 pt-4 border-t border-gray-100 max-w-md mx-auto flex flex-col items-center justify-center">
-        <h2 className="text-[9px] font-medium uppercase tracking-[0.6em] text-gray-400 text-center">This month's photographers</h2>
-        <div className="h-[1px] w-12 bg-black/10 mx-auto"></div>
-    </div>
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center max-w-6xl mx-auto w-full">
-      {FEATURED_PHOTOGRAPHERS.map((photographer) => (
-        <Link
-          key={photographer.id}
-          to={`/photographer/${photographer.id}`}
-          className="group border border-black/5 p-6 min-w-[260px] w-full text-[11px] uppercase tracking-[0.3em] text-black transition-all hover:bg-black hover:text-white flex flex-col items-center justify-center relative overflow-hidden h-40 md:h-56 shadow-sm hover:shadow-xl hover:shadow-black/10"
-        >
-          <span className="relative z-10 text-center font-light text-sm tracking-[0.4em]">{photographer.name}</span>
-          <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-[800ms] cubic-bezier(0.19, 1, 0.22, 1)"></div>
-        </Link>
-      ))}
+        ))}
+      </div>
     </div>
   </section>
 );
 
 const About: React.FC = () => (
-  <section className="max-w-3xl mx-auto px-4 reveal space-y-6 py-6">
+  <section className="max-w-3xl mx-auto px-4 reveal space-y-6 py-6 flex-grow flex flex-col justify-center">
     <header className="text-center space-y-4">
         <h2 className="text-[9px] uppercase tracking-[0.6em] text-gray-300">Mission Statement</h2>
         <h3 className="text-4xl md:text-5xl serif italic text-gray-900">Exonian Photography</h3>
@@ -219,7 +223,7 @@ const About: React.FC = () => (
 );
 
 const Contact: React.FC = () => (
-  <section className="max-w-2xl mx-auto px-4 reveal text-center py-6">
+  <section className="max-w-2xl mx-auto px-4 reveal text-center py-6 flex-grow flex flex-col justify-center">
     <div className="mb-8">
         <h3 className="text-4xl md:text-5xl serif italic text-gray-900">Contact Nico Bowers</h3>
     </div>
@@ -258,7 +262,7 @@ const PhotographerDetail: React.FC = () => {
   }
 
   return (
-    <div className="reveal">
+    <div className="reveal w-full">
       <section className="max-w-5xl mx-auto mb-6 text-center">
         <div className="mb-4">
             <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-2">Exonian Archive // {id === 'nico-bowers' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : 'VOL III'}</span>
@@ -277,7 +281,7 @@ const PhotographerDetail: React.FC = () => {
         )}
       </section>
 
-      <section className="space-y-2 mb-8">
+      <section className="space-y-4 mb-8">
         {photographer.images.map((image, index) => {
           const containerClasses = `relative flex flex-col ${
             image.size === 'large' ? 'md:w-full' : 
