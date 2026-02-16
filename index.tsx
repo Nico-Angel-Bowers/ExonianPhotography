@@ -23,56 +23,56 @@ interface Photographer {
 // --- Image Data Collections ---
 
 const NICO_BOWERS_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/1ty6NW1.jpeg', title: 'Entry 01', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/OSszIsd.jpeg', title: 'Entry 02', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/7cTUn90.jpeg', title: 'Entry 03', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/QB54ZGN.jpeg', title: 'Entry 04', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/miov8UT.jpeg', title: 'Entry 05', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/9x8EKeN.jpeg', title: 'Entry 06', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/1qjhaId.jpeg', title: 'Entry 07', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/7ZpjSMX.jpeg', title: 'Entry 08', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/4evqYe8.jpeg', title: 'Entry 09', description: '', size: 'small', offset: 'none' }
+  { url: 'https://i.imgur.com/1ty6NW1.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/OSszIsd.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/7cTUn90.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/QB54ZGN.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/miov8UT.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/9x8EKeN.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/1qjhaId.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/7ZpjSMX.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/4evqYe8.jpeg', title: '', description: '', size: 'small', offset: 'none' }
 ];
 
 const PAXTON_HOPE_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/EvHoJPa.png', title: 'Entry 01', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/nI3GHU2.jpeg', title: 'Entry 02', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/riQAZZX.jpeg', title: 'Entry 03', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/zNiUkhz.jpeg', title: 'Entry 04', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/zeKbpZD.jpeg', title: 'Entry 05', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/8W8N4Bf.jpeg', title: 'Entry 06', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/yws7S0L.jpeg', title: 'Entry 07', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/6r9vfwo.jpeg', title: 'Entry 08', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/nAIEut2.jpeg', title: 'Entry 09', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/fFbzSUW.jpeg', title: 'Entry 10', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/HdyVPeN.jpeg', title: 'Entry 11', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/1GVxJDQ.jpeg', title: 'Entry 12', description: '', size: 'small', offset: 'none' }
+  { url: 'https://i.imgur.com/EvHoJPa.png', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/nI3GHU2.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/riQAZZX.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/zNiUkhz.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/zeKbpZD.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/8W8N4Bf.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/yws7S0L.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/6r9vfwo.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/nAIEut2.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/fFbzSUW.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/HdyVPeN.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/1GVxJDQ.jpeg', title: '', description: '', size: 'small', offset: 'none' }
 ];
 
 const FLYNN_KOHUT_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/ZAmV1aL.jpeg', title: 'Entry 01', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/nUMubKh.jpeg', title: 'Entry 02', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/c2DsJs0.jpeg', title: 'Entry 03', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/ys6wNFG.jpeg', title: 'Entry 04', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/nz8SRth.jpeg', title: 'Entry 05', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/T4tkbCW.jpeg', title: 'Entry 06', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/cWFC5i7.jpeg', title: 'Entry 07', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/pzRadjb.jpeg', title: 'Entry 08', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/wtIIMNI.jpeg', title: 'Entry 09', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/ZxyzUZ8.jpeg', title: 'Entry 10', description: '', size: 'medium', offset: 'top' }
+  { url: 'https://i.imgur.com/ZAmV1aL.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/nUMubKh.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/c2DsJs0.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/ys6wNFG.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/nz8SRth.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/T4tkbCW.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/cWFC5i7.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/pzRadjb.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/wtIIMNI.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/ZxyzUZ8.jpeg', title: '', description: '', size: 'medium', offset: 'top' }
 ];
 
 const AALEYA_GANGULY_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/O7QFHMz.jpeg', title: 'Entry 01', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/QzsXnBW.jpeg', title: 'Entry 02', description: '', size: 'medium', offset: 'none' },
-  { url: 'https://i.imgur.com/pBAwkyy.jpeg', title: 'Entry 03', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/fXcT3Xg.jpeg', title: 'Entry 04', description: '', size: 'medium', offset: 'none' },
-  { url: 'https://i.imgur.com/kKv6Vgy.jpeg', title: 'Entry 05', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/dzG3N06.jpeg', title: 'Entry 06', description: '', size: 'medium', offset: 'none' },
-  { url: 'https://i.imgur.com/YVsxcux.jpeg', title: 'Entry 07', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/Q14Dhyc.jpeg', title: 'Entry 08', description: '', size: 'medium', offset: 'none' },
-  { url: 'https://i.imgur.com/lYSMYaT.jpeg', title: 'Entry 09', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/aA6nhov.jpeg', title: 'Entry 10', description: '', size: 'medium', offset: 'none' }
+  { url: 'https://i.imgur.com/O7QFHMz.jpeg', title: '01', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/QzsXnBW.jpeg', title: '02', description: '', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/pBAwkyy.jpeg', title: '03', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/fXcT3Xg.jpeg', title: '04', description: '', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/kKv6Vgy.jpeg', title: '05', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/dzG3N06.jpeg', title: '06', description: '', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/YVsxcux.jpeg', title: '07', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/Q14Dhyc.jpeg', title: '08', description: '', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/lYSMYaT.jpeg', title: '09', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/aA6nhov.jpeg', title: '10', description: '', size: 'medium', offset: 'none' }
 ];
 
 const FEATURED_PHOTOGRAPHERS: Photographer[] = [
@@ -320,39 +320,28 @@ const PhotographerDetail: React.FC = () => {
 
       {/* Conditional Gallery Layout */}
       {isAaleya ? (
-        <section className="max-w-screen-2xl mx-auto space-y-2 px-4">
+        <section className="w-full max-w-none space-y-1">
           <div className="flex flex-col w-full group/gallery">
             {photographer.images.map((image, index) => (
               <div 
                 key={index} 
-                className="w-full h-[10vh] md:h-[12vh] hover:h-[85vh] transition-all duration-[1200ms] ease-[cubic-bezier(0.19,1,0.22,1)] overflow-hidden relative cursor-crosshair border-b border-white/10"
+                className="w-full h-[10vh] md:h-[12vh] hover:h-[85vh] transition-all duration-[1500ms] ease-[cubic-bezier(0.19,1,0.22,1)] overflow-hidden relative cursor-crosshair border-b border-white/10"
               >
                  <img 
                   src={image.url} 
-                  alt={image.title}
+                  alt={`Photo ${index + 1}`}
                   loading="lazy"
-                  className="w-full h-full object-cover md:object-contain bg-black/5 transition-transform duration-[2000ms] hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-[2000ms] hover:scale-105"
                 />
                 
-                {/* PERSISTENT TITLE LABEL */}
-                <div className="absolute top-4 left-4 z-20 pointer-events-none">
-                  <span className="text-[9px] uppercase tracking-[0.6em] font-bold text-black/40 mix-blend-difference group-hover:text-white/80 transition-colors">
-                    {image.title}
-                  </span>
-                </div>
-
-                {/* Subtle overlay on the inactive bars */}
-                <div className="absolute inset-0 bg-black/5 opacity-40 hover:opacity-0 transition-opacity duration-700 pointer-events-none"></div>
+                {/* Subtle overlay on the inactive bars to separate them */}
+                <div className="absolute inset-0 bg-black/10 opacity-60 hover:opacity-0 transition-opacity duration-700"></div>
               </div>
             ))}
           </div>
-          
-          <div className="text-center mt-20">
-             <p className="text-[10px] uppercase tracking-[1.5em] text-gray-300">NYC // PERSPECTIVES IN MOTION</p>
-          </div>
         </section>
       ) : (
-        <section className="space-y-16 mb-8">
+        <section className="space-y-12 mb-8">
           {photographer.images.map((image, index) => {
             const containerClasses = `relative flex flex-col ${
               image.size === 'large' ? 'md:w-full' : 
@@ -362,24 +351,24 @@ const PhotographerDetail: React.FC = () => {
 
             return (
               <div key={index} className={containerClasses}>
-                <div className="group relative overflow-hidden bg-gray-50 w-full shadow-md max-h-[85vh] flex items-center justify-center">
+                <div className="group relative overflow-hidden bg-gray-50 w-full shadow-md">
                   <img 
                     src={image.url} 
-                    alt={image.title}
+                    alt={`Archival Plate ${index + 1}`}
                     loading="lazy"
-                    className="max-w-full max-h-[85vh] w-auto h-auto object-contain brightness-[1.02] contrast-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.02]"
+                    className="w-full h-auto brightness-[1.02] contrast-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.02]"
                   />
                   
                   <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-4 pointer-events-none">
                      <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-[800ms] ease-out">
-                        <h4 className="text-white text-2xl serif italic drop-shadow-lg">{image.title}</h4>
+                        <h4 className="text-white text-2xl serif italic drop-shadow-lg">0{index + 1}</h4>
                      </div>
                   </div>
                 </div>
 
                 <div className="mt-4 text-center w-full">
                   <div className="flex items-center justify-center gap-2 mb-1 text-[8px] uppercase tracking-[0.4em] text-gray-300">
-                      <span className="font-bold text-black/10">{image.title}</span>
+                      <span className="font-bold text-black/10">0{index + 1}</span>
                       <div className="h-[1px] w-4 bg-gray-100"></div>
                       <span className="opacity-30">Entry</span>
                   </div>
