@@ -9,8 +9,9 @@ interface CollectionImage {
   description: string;
   size: 'small' | 'medium' | 'large';
   offset: 'none' | 'top' | 'bottom';
-  scatterX?: string; // Optional offset for Aaleya's scattered layout
+  scatterX?: string; 
   scatterY?: string;
+  rotation?: string; // Added for Aaleya's cool layout
 }
 
 interface Photographer {
@@ -65,16 +66,16 @@ const FLYNN_KOHUT_IMAGES: CollectionImage[] = [
 ];
 
 const AALEYA_GANGULY_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/O7QFHMz.jpeg', title: '01', description: '', size: 'small', offset: 'none', scatterX: '-10%', scatterY: '20px' },
-  { url: 'https://i.imgur.com/QzsXnBW.jpeg', title: '02', description: '', size: 'medium', offset: 'none', scatterX: '5%', scatterY: '-10px' },
-  { url: 'https://i.imgur.com/pBAwkyy.jpeg', title: '03', description: '', size: 'small', offset: 'none', scatterX: '-15%', scatterY: '40px' },
-  { url: 'https://i.imgur.com/fXcT3Xg.jpeg', title: '04', description: '', size: 'medium', offset: 'none', scatterX: '10%', scatterY: '0' },
-  { url: 'https://i.imgur.com/kKv6Vgy.jpeg', title: '05', description: '', size: 'small', offset: 'none', scatterX: '0', scatterY: '-30px' },
-  { url: 'https://i.imgur.com/dzG3N06.jpeg', title: '06', description: '', size: 'medium', offset: 'none', scatterX: '-5%', scatterY: '50px' },
-  { url: 'https://i.imgur.com/YVsxcux.jpeg', title: '07', description: '', size: 'small', offset: 'none', scatterX: '15%', scatterY: '-15px' },
-  { url: 'https://i.imgur.com/Q14Dhyc.jpeg', title: '08', description: '', size: 'medium', offset: 'none', scatterX: '-10%', scatterY: '10px' },
-  { url: 'https://i.imgur.com/lYSMYaT.jpeg', title: '09', description: '', size: 'small', offset: 'none', scatterX: '20%', scatterY: '30px' },
-  { url: 'https://i.imgur.com/aA6nhov.jpeg', title: '10', description: '', size: 'medium', offset: 'none', scatterX: '0', scatterY: '-10px' }
+  { url: 'https://i.imgur.com/O7QFHMz.jpeg', title: '01', description: '', size: 'small', offset: 'none', scatterX: '-5%', scatterY: '20px', rotation: '-2deg' },
+  { url: 'https://i.imgur.com/QzsXnBW.jpeg', title: '02', description: '', size: 'medium', offset: 'none', scatterX: '10%', scatterY: '-40px', rotation: '1deg' },
+  { url: 'https://i.imgur.com/pBAwkyy.jpeg', title: '03', description: '', size: 'small', offset: 'none', scatterX: '-15%', scatterY: '60px', rotation: '3deg' },
+  { url: 'https://i.imgur.com/fXcT3Xg.jpeg', title: '04', description: '', size: 'medium', offset: 'none', scatterX: '5%', scatterY: '0', rotation: '-1deg' },
+  { url: 'https://i.imgur.com/kKv6Vgy.jpeg', title: '05', description: '', size: 'small', offset: 'none', scatterX: '-8%', scatterY: '-50px', rotation: '-4deg' },
+  { url: 'https://i.imgur.com/dzG3N06.jpeg', title: '06', description: '', size: 'medium', offset: 'none', scatterX: '12%', scatterY: '80px', rotation: '2deg' },
+  { url: 'https://i.imgur.com/YVsxcux.jpeg', title: '07', description: '', size: 'small', offset: 'none', scatterX: '-20%', scatterY: '-20px', rotation: '-2deg' },
+  { url: 'https://i.imgur.com/Q14Dhyc.jpeg', title: '08', description: '', size: 'medium', offset: 'none', scatterX: '8%', scatterY: '30px', rotation: '1deg' },
+  { url: 'https://i.imgur.com/lYSMYaT.jpeg', title: '09', description: '', size: 'small', offset: 'none', scatterX: '-10%', scatterY: '100px', rotation: '5deg' },
+  { url: 'https://i.imgur.com/aA6nhov.jpeg', title: '10', description: '', size: 'medium', offset: 'none', scatterX: '15%', scatterY: '-10px', rotation: '-1deg' }
 ];
 
 const FEATURED_PHOTOGRAPHERS: Photographer[] = [
@@ -304,7 +305,7 @@ const PhotographerDetail: React.FC = () => {
 
   return (
     <div className="reveal w-full px-8 pb-20">
-      <section className="max-w-5xl mx-auto mb-12 text-center">
+      <section className="max-w-5xl mx-auto mb-16 text-center">
         <div className="mb-4">
             <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-2">Exonian Archive // {id === 'flynn-kohut' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : id === 'aaleya-ganguly' ? 'VOL III' : 'VOL IV'}</span>
             <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
@@ -324,29 +325,44 @@ const PhotographerDetail: React.FC = () => {
 
       {/* Conditional Gallery Layout */}
       {isAaleya ? (
-        <section className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 items-start">
+        <section className="max-w-6xl mx-auto relative pt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24 items-start">
             {photographer.images.map((image, index) => (
               <div 
                 key={index} 
-                className="relative z-10"
+                className="relative z-10 transition-transform duration-700 hover:z-20"
                 style={{ 
-                    transform: `translate(${image.scatterX || '0'}, ${image.scatterY || '0'})`,
+                    transform: `translate(${image.scatterX || '0'}, ${image.scatterY || '0'}) rotate(${image.rotation || '0deg'})`,
                 }}
               >
-                <div className="group relative overflow-hidden bg-gray-50 shadow-md transition-all duration-700 hover:scale-110 hover:z-50 hover:shadow-2xl cursor-crosshair">
+                <div className="group relative overflow-hidden bg-white shadow-xl hover:shadow-2xl transition-all duration-700 cursor-zoom-in">
                    <img 
                     src={image.url} 
                     alt={`Archival Plate ${index + 1}`}
                     loading="lazy"
-                    className="w-full h-auto grayscale brightness-[1.02] contrast-[1.01] transition-all duration-1000 group-hover:grayscale-0"
+                    className="w-full h-auto brightness-[1.02] contrast-[1.01] transition-all duration-1000 group-hover:scale-110"
                   />
-                  <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 pointer-events-none">
-                      <span className="text-white text-[10px] uppercase tracking-widest serif italic">Entry {image.title}</span>
+                  
+                  {/* Chic Labeling */}
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-2 py-1 border border-black/5 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <span className="text-[8px] uppercase tracking-[0.3em] font-bold text-black">A.G. Plate {image.title}</span>
                   </div>
+
+                  <div className="absolute inset-0 border border-black/0 group-hover:border-black/5 transition-all duration-700 pointer-events-none"></div>
+                </div>
+                
+                {/* Secondary Meta Information */}
+                <div className="mt-4 flex items-center gap-3 opacity-30 group-hover:opacity-100 transition-opacity duration-700">
+                    <div className="h-[1px] w-6 bg-black"></div>
+                    <span className="text-[7px] uppercase tracking-[0.5em] font-medium">Archival Entry // NYC</span>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Abstract background text for Aaleya's 'cool' layout */}
+          <div className="fixed inset-0 pointer-events-none -z-10 flex items-center justify-center opacity-[0.02]">
+              <h2 className="text-[25vw] serif italic font-black uppercase whitespace-nowrap">Cinematic Motion</h2>
           </div>
         </section>
       ) : (
@@ -365,7 +381,7 @@ const PhotographerDetail: React.FC = () => {
                     src={image.url} 
                     alt={`Archival Plate ${index + 1}`}
                     loading="lazy"
-                    className="w-full h-auto grayscale brightness-[1.02] contrast-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:grayscale-0 group-hover:scale-[1.02]"
+                    className="w-full h-auto brightness-[1.02] contrast-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.02]"
                   />
                   
                   <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-4 pointer-events-none">
