@@ -9,6 +9,8 @@ interface CollectionImage {
   description: string;
   size: 'small' | 'medium' | 'large';
   offset: 'none' | 'top' | 'bottom';
+  scatterX?: string; // Optional offset for Aaleya's scattered layout
+  scatterY?: string;
 }
 
 interface Photographer {
@@ -16,6 +18,7 @@ interface Photographer {
   name: string;
   description: string;
   collectionTitle: string;
+  profileImage: string;
   images: CollectionImage[];
 }
 
@@ -61,27 +64,51 @@ const FLYNN_KOHUT_IMAGES: CollectionImage[] = [
   { url: 'https://i.imgur.com/ZxyzUZ8.jpeg', title: '', description: '', size: 'medium', offset: 'top' }
 ];
 
+const AALEYA_GANGULY_IMAGES: CollectionImage[] = [
+  { url: 'https://i.imgur.com/O7QFHMz.jpeg', title: '01', description: '', size: 'small', offset: 'none', scatterX: '-10%', scatterY: '20px' },
+  { url: 'https://i.imgur.com/QzsXnBW.jpeg', title: '02', description: '', size: 'medium', offset: 'none', scatterX: '5%', scatterY: '-10px' },
+  { url: 'https://i.imgur.com/pBAwkyy.jpeg', title: '03', description: '', size: 'small', offset: 'none', scatterX: '-15%', scatterY: '40px' },
+  { url: 'https://i.imgur.com/fXcT3Xg.jpeg', title: '04', description: '', size: 'medium', offset: 'none', scatterX: '10%', scatterY: '0' },
+  { url: 'https://i.imgur.com/kKv6Vgy.jpeg', title: '05', description: '', size: 'small', offset: 'none', scatterX: '0', scatterY: '-30px' },
+  { url: 'https://i.imgur.com/dzG3N06.jpeg', title: '06', description: '', size: 'medium', offset: 'none', scatterX: '-5%', scatterY: '50px' },
+  { url: 'https://i.imgur.com/YVsxcux.jpeg', title: '07', description: '', size: 'small', offset: 'none', scatterX: '15%', scatterY: '-15px' },
+  { url: 'https://i.imgur.com/Q14Dhyc.jpeg', title: '08', description: '', size: 'medium', offset: 'none', scatterX: '-10%', scatterY: '10px' },
+  { url: 'https://i.imgur.com/lYSMYaT.jpeg', title: '09', description: '', size: 'small', offset: 'none', scatterX: '20%', scatterY: '30px' },
+  { url: 'https://i.imgur.com/aA6nhov.jpeg', title: '10', description: '', size: 'medium', offset: 'none', scatterX: '0', scatterY: '-10px' }
+];
+
 const FEATURED_PHOTOGRAPHERS: Photographer[] = [
   {
-    id: 'nico-bowers',
-    name: 'Nico Bowers',
-    description: 'Focused on creating calm, intentional images that emphasize atmosphere, composition, and honesty.',
-    collectionTitle: 'Jazz Cafe Night',
-    images: NICO_BOWERS_IMAGES
+    id: 'flynn-kohut',
+    name: 'Flynn Kohut',
+    description: 'Scenes that demand a pause, finding profound peace in a world of hate.',
+    collectionTitle: 'Peace in a World of Hate',
+    profileImage: 'https://i.imgur.com/de5Jzhw.png',
+    images: FLYNN_KOHUT_IMAGES
   },
   {
     id: 'paxton-hope',
     name: 'Paxton Hope',
     description: 'An exploration of the ephemeral and the discarded.',
     collectionTitle: '',
+    profileImage: 'https://i.imgur.com/Jw3OYdG.jpeg',
     images: PAXTON_HOPE_IMAGES
   },
   {
-    id: 'flynn-kohut',
-    name: 'Flynn Kohut',
-    description: 'Scenes that demand a pause, finding profound peace in a world of hate.',
-    collectionTitle: 'Peace in a World of Hate',
-    images: FLYNN_KOHUT_IMAGES
+    id: 'aaleya-ganguly',
+    name: 'Aaleya Ganguly',
+    description: 'A cinematic perspective on the mundane, capturing light and shadow in motion.',
+    collectionTitle: '',
+    profileImage: 'https://i.imgur.com/fXY4l0G.png',
+    images: AALEYA_GANGULY_IMAGES
+  },
+  {
+    id: 'nico-bowers',
+    name: 'Nico Bowers',
+    description: 'Focused on creating calm, intentional images that emphasize atmosphere, composition, and honesty.',
+    collectionTitle: 'Jazz Cafe Night',
+    profileImage: 'https://i.imgur.com/RYXwCGo.jpeg',
+    images: NICO_BOWERS_IMAGES
   }
 ];
 
@@ -103,21 +130,24 @@ const ScrollToTop = () => {
 
 const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
+  const isHome = location.pathname === '/';
 
   return (
     <div className="min-h-screen flex flex-col bg-[#fcfcfc]">
       <header className="py-4 px-8 sticky top-0 bg-[#fcfcfc]/95 backdrop-blur-md z-50 border-b border-gray-100/50">
-        <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4">
-          <Link to="/" className="group text-center md:text-left">
-            <h1 className="text-xl md:text-2xl font-light uppercase tracking-[0.5em] transition-all group-hover:opacity-60 leading-tight">
-              Exonian Photography
-            </h1>
-            <p className="text-[9px] uppercase tracking-[0.4em] text-gray-400 mt-1 font-medium">
-              (hosted by nico bowers)
-            </p>
-          </Link>
+        <div className={`max-w-screen-xl mx-auto flex flex-col md:flex-row items-center ${isHome ? 'justify-center' : 'justify-between'} gap-2 md:gap-4`}>
+          {!isHome && (
+            <Link to="/" className="group text-center md:text-left">
+              <h1 className="text-xl md:text-2xl font-light uppercase tracking-[0.5em] transition-all group-hover:opacity-60 leading-tight">
+                Exonian Photography
+              </h1>
+              <p className="text-[9px] uppercase tracking-[0.4em] text-gray-400 mt-1 font-medium">
+                (hosted by nico bowers)
+              </p>
+            </Link>
+          )}
 
-          <nav className="flex gap-6 md:gap-12 mt-2 md:mt-0">
+          <nav className={`flex gap-6 md:gap-12 ${isHome ? 'mt-0' : 'mt-2 md:mt-0'}`}>
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.path}
@@ -167,14 +197,14 @@ const Home: React.FC = () => (
     {/* Explicitly centered hero container */}
     <div className="flex-grow flex flex-col items-center justify-center w-full px-4 text-center">
       <div className="mb-8 w-full">
-          <h1 className="text-[12vw] md:text-[8rem] lg:text-[10rem] serif font-light uppercase tracking-tighter leading-[0.8] mx-auto">
-            <span className="block w-full">Exonian</span>
-            <span className="block w-full">Photography</span>
+          <h1 className="text-[14vw] md:text-[8rem] lg:text-[10rem] serif font-light uppercase tracking-tighter leading-[0.85] mx-auto text-center w-full">
+            <span className="block">Exonian</span>
+            <span className="block">Photography</span>
           </h1>
       </div>
 
-      <div className="mb-6 space-y-5 max-w-xl mx-auto">
-          <p className="text-base md:text-xl text-gray-500 font-light leading-relaxed italic serif text-center px-4">
+      <div className="mb-6 space-y-5 max-w-xl mx-auto text-center flex flex-col items-center">
+          <p className="text-base md:text-xl text-gray-500 font-light leading-relaxed italic serif px-4">
             A place to share all campus events through your own lense.
           </p>
           <div className="pt-2">
@@ -187,20 +217,27 @@ const Home: React.FC = () => (
 
     {/* Featured photographers at the bottom */}
     <div className="w-full pb-12 px-8">
-      <div className="mb-8 space-y-2 pt-6 border-t border-gray-100 max-w-md mx-auto flex flex-col items-center justify-center">
+      <div className="mb-10 space-y-2 pt-6 border-t border-gray-100 max-w-md mx-auto flex flex-col items-center justify-center">
           <h2 className="text-[9px] font-medium uppercase tracking-[0.6em] text-gray-400 text-center">This month's photographers</h2>
           <div className="h-[1px] w-12 bg-black/10 mx-auto"></div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 justify-items-center max-w-6xl mx-auto w-full">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 justify-items-center max-w-6xl mx-auto w-full">
         {FEATURED_PHOTOGRAPHERS.map((photographer) => (
           <Link
             key={photographer.id}
             to={`/photographer/${photographer.id}`}
-            className="group border border-black/5 p-6 min-w-[260px] w-full text-[11px] uppercase tracking-[0.3em] text-black transition-all hover:bg-black hover:text-white flex flex-col items-center justify-center relative overflow-hidden h-40 md:h-56 shadow-sm hover:shadow-xl hover:shadow-black/10"
+            className="group w-full flex flex-col items-center"
           >
-            <span className="relative z-10 text-center font-light text-sm tracking-[0.4em]">{photographer.name}</span>
-            <div className="absolute inset-0 bg-black translate-y-full group-hover:translate-y-0 transition-transform duration-[800ms] cubic-bezier(0.19, 1, 0.22, 1)"></div>
+            <div className="relative w-full aspect-[4/5] overflow-hidden bg-gray-100 mb-4 shadow-sm group-hover:shadow-xl transition-all duration-700">
+              <img 
+                src={photographer.profileImage} 
+                alt={photographer.name}
+                className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-700"></div>
+            </div>
+            <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-medium transition-colors group-hover:text-black">{photographer.name}</span>
           </Link>
         ))}
       </div>
@@ -263,11 +300,13 @@ const PhotographerDetail: React.FC = () => {
     return <Navigate to="/" />;
   }
 
+  const isAaleya = id === 'aaleya-ganguly';
+
   return (
-    <div className="reveal w-full px-8">
-      <section className="max-w-5xl mx-auto mb-6 text-center">
+    <div className="reveal w-full px-8 pb-20">
+      <section className="max-w-5xl mx-auto mb-12 text-center">
         <div className="mb-4">
-            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-2">Exonian Archive // {id === 'nico-bowers' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : 'VOL III'}</span>
+            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-2">Exonian Archive // {id === 'flynn-kohut' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : id === 'aaleya-ganguly' ? 'VOL III' : 'VOL IV'}</span>
             <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
               <span className="block">{photographer.name.split(' ')[0]}</span>
               <span className="block">{photographer.name.split(' ')[1]}</span>
@@ -283,44 +322,73 @@ const PhotographerDetail: React.FC = () => {
         )}
       </section>
 
-      <section className="space-y-4 mb-8">
-        {photographer.images.map((image, index) => {
-          const containerClasses = `relative flex flex-col ${
-            image.size === 'large' ? 'md:w-full' : 
-            image.size === 'medium' ? 'md:w-[80%] mx-auto' : 
-            'md:w-[55%] mx-auto'
-          } items-center`;
-
-          return (
-            <div key={index} className={containerClasses}>
-              <div className="group relative overflow-hidden bg-gray-50 w-full shadow-md">
-                <img 
-                  src={image.url} 
-                  alt={`Archival Plate ${index + 1}`}
-                  loading="lazy"
-                  className="w-full h-auto grayscale brightness-[1.02] contrast-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:grayscale-0 group-hover:scale-[1.02]"
-                />
-                
-                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-4 pointer-events-none">
-                   <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-[800ms] ease-out">
-                      <h4 className="text-white text-2xl serif italic drop-shadow-lg">0{index + 1}</h4>
-                   </div>
+      {/* Conditional Gallery Layout */}
+      {isAaleya ? (
+        <section className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16 items-start">
+            {photographer.images.map((image, index) => (
+              <div 
+                key={index} 
+                className="relative z-10"
+                style={{ 
+                    transform: `translate(${image.scatterX || '0'}, ${image.scatterY || '0'})`,
+                }}
+              >
+                <div className="group relative overflow-hidden bg-gray-50 shadow-md transition-all duration-700 hover:scale-110 hover:z-50 hover:shadow-2xl cursor-crosshair">
+                   <img 
+                    src={image.url} 
+                    alt={`Archival Plate ${index + 1}`}
+                    loading="lazy"
+                    className="w-full h-auto grayscale brightness-[1.02] contrast-[1.01] transition-all duration-1000 group-hover:grayscale-0"
+                  />
+                  <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-2 pointer-events-none">
+                      <span className="text-white text-[10px] uppercase tracking-widest serif italic">Entry {image.title}</span>
+                  </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </section>
+      ) : (
+        <section className="space-y-4 mb-8">
+          {photographer.images.map((image, index) => {
+            const containerClasses = `relative flex flex-col ${
+              image.size === 'large' ? 'md:w-full' : 
+              image.size === 'medium' ? 'md:w-[80%] mx-auto' : 
+              'md:w-[55%] mx-auto'
+            } items-center`;
 
-              <div className="mt-2 text-center w-full">
-                <div className="flex items-center justify-center gap-2 mb-1 text-[8px] uppercase tracking-[0.4em] text-gray-300">
-                    <span className="font-bold text-black/10">0{index + 1}</span>
-                    <div className="h-[1px] w-4 bg-gray-100"></div>
-                    <span className="opacity-30">Entry</span>
+            return (
+              <div key={index} className={containerClasses}>
+                <div className="group relative overflow-hidden bg-gray-50 w-full shadow-md">
+                  <img 
+                    src={image.url} 
+                    alt={`Archival Plate ${index + 1}`}
+                    loading="lazy"
+                    className="w-full h-auto grayscale brightness-[1.02] contrast-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:grayscale-0 group-hover:scale-[1.02]"
+                  />
+                  
+                  <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-4 pointer-events-none">
+                     <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-[800ms] ease-out">
+                        <h4 className="text-white text-2xl serif italic drop-shadow-lg">0{index + 1}</h4>
+                     </div>
+                  </div>
+                </div>
+
+                <div className="mt-2 text-center w-full">
+                  <div className="flex items-center justify-center gap-2 mb-1 text-[8px] uppercase tracking-[0.4em] text-gray-300">
+                      <span className="font-bold text-black/10">0{index + 1}</span>
+                      <div className="h-[1px] w-4 bg-gray-100"></div>
+                      <span className="opacity-30">Entry</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          );
-        })}
-      </section>
+            );
+          })}
+        </section>
+      )}
 
-      <section className="max-w-3xl mx-auto text-center py-6 border-t border-gray-100">
+      <section className="max-w-3xl mx-auto text-center py-12 border-t border-gray-100 mt-20">
           <div className="space-y-4">
             <div className="pt-2">
                 <Link to="/contact" className="inline-block border-b border-black/20 py-2 px-12 text-[10px] uppercase tracking-[0.4em] hover:text-gray-400 hover:border-gray-200 transition-all duration-1000 font-medium">
