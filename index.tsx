@@ -297,10 +297,10 @@ const PhotographerDetail: React.FC = () => {
   }
 
   return (
-    <div className="reveal w-full px-8 pb-24">
-      <section className="max-w-5xl mx-auto mb-16 text-center">
+    <div className="reveal w-full px-4 md:px-8 pb-24">
+      <section className="max-w-5xl mx-auto mb-16 mt-8 text-center">
         <div className="mb-4">
-            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-2">Exeter Archive // {id === 'flynn-kohut' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : id === 'aaleya-ganguly' ? 'VOL III' : 'VOL IV'}</span>
+            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-3">Exeter Archive // {id === 'flynn-kohut' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : id === 'aaleya-ganguly' ? 'VOL III' : 'VOL IV'}</span>
             <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
               <span className="block">{photographer.name.split(' ')[0]}</span>
               <span className="block">{photographer.name.split(' ')[1]}</span>
@@ -316,39 +316,33 @@ const PhotographerDetail: React.FC = () => {
         )}
       </section>
 
-      {/* Standard Portfolio Grid Layout */}
-      <section className="space-y-24 mb-16 max-w-6xl mx-auto">
+      {/* Grid Layout - Optimized so all photos fit on screen without excessive height */}
+      <section className="space-y-32 mb-24 max-w-6xl mx-auto">
         {photographer.images.map((image, index) => {
-          const containerClasses = `relative flex flex-col ${
-            image.size === 'large' ? 'md:w-full' : 
-            image.size === 'medium' ? 'md:w-[80%] mx-auto' : 
-            'md:w-[60%] mx-auto'
-          } ${
-            image.offset === 'top' ? 'md:-mt-12' : 
-            image.offset === 'bottom' ? 'md:mt-12' : ''
-          } items-center`;
-
           return (
-            <div key={index} className={containerClasses}>
-              <div className="group relative overflow-hidden bg-gray-50 w-full shadow-2xl shadow-black/5">
-                <img 
-                  src={image.url} 
-                  alt={`Archival Entry ${index + 1}`}
-                  loading="lazy"
-                  className="w-full h-auto brightness-[1.02] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.03]"
-                />
-                
-                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-6 pointer-events-none">
-                   <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-[800ms] ease-out">
-                      <h4 className="text-white text-3xl serif italic drop-shadow-xl">0{index + 1}</h4>
-                   </div>
+            <div key={index} className="relative flex flex-col items-center w-full">
+              <div className="group relative flex items-center justify-center w-full bg-transparent">
+                <div className="relative overflow-hidden shadow-2xl shadow-black/10 bg-gray-50/50 flex items-center justify-center">
+                    <img 
+                      src={image.url} 
+                      alt={`Archival Entry ${index + 1}`}
+                      loading="lazy"
+                      className="max-h-[82vh] w-auto max-w-full object-contain brightness-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.02]"
+                    />
+                    
+                    {/* Discrete hover information */}
+                    <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-8 pointer-events-none">
+                       <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-[800ms] ease-out">
+                          <h4 className="text-white text-3xl serif italic drop-shadow-xl font-light">Entry 0{index + 1}</h4>
+                       </div>
+                    </div>
                 </div>
               </div>
 
-              <div className="mt-6 text-center w-full">
-                <div className="flex items-center justify-center gap-3 text-[9px] uppercase tracking-[0.5em] text-gray-300">
-                    <span className="font-bold text-black/20">0{index + 1}</span>
-                    <div className="h-[1px] w-6 bg-gray-100"></div>
+              <div className="mt-8 text-center w-full">
+                <div className="flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.6em] text-gray-300">
+                    <span className="font-bold text-black/20">Archive // 0{index + 1}</span>
+                    <div className="h-[1px] w-8 bg-gray-100"></div>
                     <span className="opacity-40 font-medium">Archival Selection</span>
                 </div>
               </div>
@@ -357,9 +351,9 @@ const PhotographerDetail: React.FC = () => {
         })}
       </section>
 
-      <section className="max-w-3xl mx-auto text-center py-16 border-t border-gray-100 mt-24">
+      <section className="max-w-3xl mx-auto text-center py-20 border-t border-gray-100 mt-24">
           <div className="space-y-4">
-            <h3 className="text-2xl serif italic mb-4">Inquiries & Correspondence</h3>
+            <h3 className="text-2xl md:text-3xl serif italic mb-6">Inquiries & Correspondence</h3>
             <div className="pt-2">
                 <Link to="/contact" className="inline-block border border-black/10 px-12 py-4 text-[10px] uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-1000 font-medium">
                     Contact Nico Bowers
