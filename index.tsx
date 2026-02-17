@@ -137,7 +137,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
           {!isHome && (
             <Link to="/" className="group text-center md:text-left">
               <h1 className="text-xl md:text-2xl font-light uppercase tracking-[0.5em] transition-all group-hover:opacity-60 leading-tight">
-                Exonian Photography
+                Exeter Photography
               </h1>
               <p className="text-[9px] uppercase tracking-[0.4em] text-gray-400 mt-1 font-medium">
                 (hosted by nico bowers)
@@ -195,7 +195,7 @@ const Home: React.FC = () => (
     <div className="flex-grow flex flex-col items-center justify-center w-full px-4 text-center">
       <div className="mb-8 w-full">
           <h1 className="text-[14vw] md:text-[8rem] lg:text-[10rem] serif font-light uppercase tracking-tighter leading-[0.85] mx-auto text-center w-full">
-            <span className="block">Exonian</span>
+            <span className="block">Exeter</span>
             <span className="block">Photography</span>
           </h1>
       </div>
@@ -245,12 +245,12 @@ const About: React.FC = () => (
   <section className="max-w-3xl mx-auto px-8 reveal space-y-6 py-6 flex-grow flex flex-col justify-center">
     <header className="text-center space-y-4">
         <h2 className="text-[9px] uppercase tracking-[0.6em] text-gray-300">Mission Statement</h2>
-        <h3 className="text-4xl md:text-5xl serif italic text-gray-900">Exonian Photography</h3>
+        <h3 className="text-4xl md:text-5xl serif italic text-gray-900">Exeter Photography</h3>
     </header>
 
     <div className="text-xl md:text-2xl leading-[1.7] text-gray-500 font-light text-center serif italic max-w-2xl mx-auto">
       <p>
-        Exonian Photography is an archive for students around the world to share the world through their own lenses. 
+        Exeter Photography is an archive for students around the world to share the world through their own lenses. 
         Based in <span className="text-black font-normal not-italic">Exeter, New Hampshire</span>, this collection is made special by the students who contribute to it!
       </p>
     </div>
@@ -296,13 +296,11 @@ const PhotographerDetail: React.FC = () => {
     return <Navigate to="/" />;
   }
 
-  const isAaleya = id === 'aaleya-ganguly';
-
   return (
     <div className="reveal w-full px-8 pb-24">
       <section className="max-w-5xl mx-auto mb-16 text-center">
         <div className="mb-4">
-            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-2">Exonian Archive // {id === 'flynn-kohut' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : id === 'aaleya-ganguly' ? 'VOL III' : 'VOL IV'}</span>
+            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-2">Exeter Archive // {id === 'flynn-kohut' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : id === 'aaleya-ganguly' ? 'VOL III' : 'VOL IV'}</span>
             <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
               <span className="block">{photographer.name.split(' ')[0]}</span>
               <span className="block">{photographer.name.split(' ')[1]}</span>
@@ -318,71 +316,52 @@ const PhotographerDetail: React.FC = () => {
         )}
       </section>
 
-      {/* Conditional Gallery Layout */}
-      {isAaleya ? (
-        <section className="w-full max-w-none space-y-1">
-          <div className="flex flex-col w-full group/gallery">
-            {photographer.images.map((image, index) => (
-              <div 
-                key={index} 
-                className="w-full h-[10vh] md:h-[12vh] hover:h-[85vh] transition-all duration-[1500ms] ease-[cubic-bezier(0.19,1,0.22,1)] overflow-hidden relative cursor-crosshair border-b border-white/10"
-              >
-                 <img 
+      {/* Standard Portfolio Grid Layout */}
+      <section className="space-y-24 mb-16 max-w-6xl mx-auto">
+        {photographer.images.map((image, index) => {
+          const containerClasses = `relative flex flex-col ${
+            image.size === 'large' ? 'md:w-full' : 
+            image.size === 'medium' ? 'md:w-[80%] mx-auto' : 
+            'md:w-[60%] mx-auto'
+          } ${
+            image.offset === 'top' ? 'md:-mt-12' : 
+            image.offset === 'bottom' ? 'md:mt-12' : ''
+          } items-center`;
+
+          return (
+            <div key={index} className={containerClasses}>
+              <div className="group relative overflow-hidden bg-gray-50 w-full shadow-2xl shadow-black/5">
+                <img 
                   src={image.url} 
-                  alt={`Photo ${index + 1}`}
+                  alt={`Archival Entry ${index + 1}`}
                   loading="lazy"
-                  className="w-full h-full object-cover transition-transform duration-[2000ms] hover:scale-105"
+                  className="w-full h-auto brightness-[1.02] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.03]"
                 />
                 
-                {/* Subtle overlay on the inactive bars to separate them */}
-                <div className="absolute inset-0 bg-black/10 opacity-60 hover:opacity-0 transition-opacity duration-700"></div>
-              </div>
-            ))}
-          </div>
-        </section>
-      ) : (
-        <section className="space-y-12 mb-8">
-          {photographer.images.map((image, index) => {
-            const containerClasses = `relative flex flex-col ${
-              image.size === 'large' ? 'md:w-full' : 
-              image.size === 'medium' ? 'md:w-[80%] mx-auto' : 
-              'md:w-[55%] mx-auto'
-            } items-center`;
-
-            return (
-              <div key={index} className={containerClasses}>
-                <div className="group relative overflow-hidden bg-gray-50 w-full shadow-md">
-                  <img 
-                    src={image.url} 
-                    alt={`Archival Plate ${index + 1}`}
-                    loading="lazy"
-                    className="w-full h-auto brightness-[1.02] contrast-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.02]"
-                  />
-                  
-                  <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-4 pointer-events-none">
-                     <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-[800ms] ease-out">
-                        <h4 className="text-white text-2xl serif italic drop-shadow-lg">0{index + 1}</h4>
-                     </div>
-                  </div>
-                </div>
-
-                <div className="mt-4 text-center w-full">
-                  <div className="flex items-center justify-center gap-2 mb-1 text-[8px] uppercase tracking-[0.4em] text-gray-300">
-                      <span className="font-bold text-black/10">0{index + 1}</span>
-                      <div className="h-[1px] w-4 bg-gray-100"></div>
-                      <span className="opacity-30">Entry</span>
-                  </div>
+                <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-6 pointer-events-none">
+                   <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-[800ms] ease-out">
+                      <h4 className="text-white text-3xl serif italic drop-shadow-xl">0{index + 1}</h4>
+                   </div>
                 </div>
               </div>
-            );
-          })}
-        </section>
-      )}
 
-      <section className="max-w-3xl mx-auto text-center py-12 border-t border-gray-100 mt-24">
+              <div className="mt-6 text-center w-full">
+                <div className="flex items-center justify-center gap-3 text-[9px] uppercase tracking-[0.5em] text-gray-300">
+                    <span className="font-bold text-black/20">0{index + 1}</span>
+                    <div className="h-[1px] w-6 bg-gray-100"></div>
+                    <span className="opacity-40 font-medium">Archival Selection</span>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      <section className="max-w-3xl mx-auto text-center py-16 border-t border-gray-100 mt-24">
           <div className="space-y-4">
+            <h3 className="text-2xl serif italic mb-4">Inquiries & Correspondence</h3>
             <div className="pt-2">
-                <Link to="/contact" className="inline-block border-b border-black/20 py-2 px-12 text-[10px] uppercase tracking-[0.4em] hover:text-gray-400 hover:border-gray-200 transition-all duration-1000 font-medium">
+                <Link to="/contact" className="inline-block border border-black/10 px-12 py-4 text-[10px] uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-1000 font-medium">
                     Contact Nico Bowers
                 </Link>
             </div>
