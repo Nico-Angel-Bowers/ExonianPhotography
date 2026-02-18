@@ -18,6 +18,7 @@ interface Photographer {
   collectionTitle: string;
   profileImage: string;
   images: CollectionImage[];
+  isFeatured?: boolean;
 }
 
 // --- Image Data Collections ---
@@ -75,6 +76,19 @@ const AALEYA_GANGULY_IMAGES: CollectionImage[] = [
   { url: 'https://i.imgur.com/aA6nhov.jpeg', title: '10', description: '', size: 'medium', offset: 'none' }
 ];
 
+const GORDON_IMAGES: CollectionImage[] = [
+  { url: 'https://i.imgur.com/H59aSOO.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/aaEKQHd.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/4wx4ZgW.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/SiR5G1X.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/UTWmyqE.jpeg', title: '', description: '', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/jeF24FH.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/3Js3ZIQ.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/8thGFI9.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/PLG11i4.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/5Jtzghj.jpeg', title: '', description: '', size: 'large', offset: 'none' }
+];
+
 const FEATURED_PHOTOGRAPHERS: Photographer[] = [
   {
     id: 'flynn-kohut',
@@ -82,7 +96,8 @@ const FEATURED_PHOTOGRAPHERS: Photographer[] = [
     description: 'Scenes that demand a pause, finding profound peace in a world of hate.',
     collectionTitle: 'Peace in a World of Hate',
     profileImage: 'https://i.imgur.com/de5Jzhw.png',
-    images: FLYNN_KOHUT_IMAGES
+    images: FLYNN_KOHUT_IMAGES,
+    isFeatured: true
   },
   {
     id: 'paxton-hope',
@@ -90,7 +105,8 @@ const FEATURED_PHOTOGRAPHERS: Photographer[] = [
     description: 'An exploration of the ephemeral and the discarded.',
     collectionTitle: '',
     profileImage: 'https://i.imgur.com/Jw3OYdG.jpeg',
-    images: PAXTON_HOPE_IMAGES
+    images: PAXTON_HOPE_IMAGES,
+    isFeatured: true
   },
   {
     id: 'aaleya-ganguly',
@@ -98,7 +114,8 @@ const FEATURED_PHOTOGRAPHERS: Photographer[] = [
     description: 'A cinematic perspective on the mundane, capturing light and shadow in motion.',
     collectionTitle: '',
     profileImage: 'https://i.imgur.com/fXY4l0G.png',
-    images: AALEYA_GANGULY_IMAGES
+    images: AALEYA_GANGULY_IMAGES,
+    isFeatured: true
   },
   {
     id: 'nico-bowers',
@@ -106,12 +123,23 @@ const FEATURED_PHOTOGRAPHERS: Photographer[] = [
     description: 'Focused on creating calm, intentional images that emphasize atmosphere, composition, and honesty.',
     collectionTitle: 'Jazz Cafe Night',
     profileImage: 'https://i.imgur.com/RYXwCGo.jpeg',
-    images: NICO_BOWERS_IMAGES
+    images: NICO_BOWERS_IMAGES,
+    isFeatured: true
+  },
+  {
+    id: 'gordon',
+    name: 'Gordon Wiafe',
+    description: 'Capturing the raw essence of campus life and architectural nuances.',
+    collectionTitle: '',
+    profileImage: 'https://i.imgur.com/iHOcEM2.png',
+    images: GORDON_IMAGES,
+    isFeatured: false
   }
 ];
 
 const NAV_ITEMS = [
   { label: 'Home', path: '/' },
+  { label: 'Photographers', path: '/photographers' },
   { label: 'About', path: '/about' },
   { label: 'Contact', path: '/contact' }
 ];
@@ -145,12 +173,12 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
             </Link>
           )}
 
-          <nav className={`flex gap-6 md:gap-12 ${isHome ? 'mt-0' : 'mt-2 md:mt-0'}`}>
+          <nav className={`flex gap-6 md:gap-10 ${isHome ? 'mt-0' : 'mt-2 md:mt-0'}`}>
             {NAV_ITEMS.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-[10px] uppercase tracking-[0.4em] transition-all relative pb-1 ${
+                className={`text-[10px] uppercase tracking-[0.4em] transition-all relative pb-1 whitespace-nowrap ${
                   location.pathname === item.path 
                   ? 'text-black font-semibold' 
                   : 'text-gray-400 hover:text-black'
@@ -219,7 +247,7 @@ const Home: React.FC = () => (
       </div>
 
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 justify-items-center max-w-6xl mx-auto w-full">
-        {FEATURED_PHOTOGRAPHERS.map((photographer) => (
+        {FEATURED_PHOTOGRAPHERS.filter(p => p.isFeatured).map((photographer) => (
           <Link
             key={photographer.id}
             to={`/photographer/${photographer.id}`}
@@ -237,6 +265,43 @@ const Home: React.FC = () => (
           </Link>
         ))}
       </div>
+    </div>
+  </section>
+);
+
+const PhotographersPage: React.FC = () => (
+  <section className="reveal w-full px-8 pb-24 flex flex-col items-center">
+    <div className="max-w-4xl mx-auto mb-16 mt-12 text-center">
+      <h2 className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-4">Registry</h2>
+      <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-6 text-black">Photographers</h3>
+      <div className="h-[1px] w-24 bg-black/10 mx-auto mb-12"></div>
+    </div>
+
+    <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 md:gap-12 max-w-6xl mx-auto w-full">
+      {FEATURED_PHOTOGRAPHERS.map((photographer) => (
+        <Link
+          key={photographer.id}
+          to={`/photographer/${photographer.id}`}
+          className="group w-full flex flex-col items-center"
+        >
+          <div className="relative w-full aspect-[4/5] overflow-hidden bg-gray-100 mb-4 shadow-sm group-hover:shadow-xl transition-all duration-700">
+            <img 
+              src={photographer.profileImage} 
+              alt={photographer.name}
+              className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-700"></div>
+          </div>
+          <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-medium transition-colors group-hover:text-black">{photographer.name}</span>
+        </Link>
+      ))}
+    </div>
+    
+    <div className="mt-32 max-w-3xl mx-auto text-center border-t border-gray-100 pt-16">
+      <h4 className="text-xl serif italic mb-8">Join Us</h4>
+      <Link to="/contact" className="inline-block border border-black/10 px-12 py-4 text-[9px] uppercase tracking-[0.4em] text-black hover:bg-black hover:text-white transition-all duration-700">
+        Submit Archive
+      </Link>
     </div>
   </section>
 );
@@ -296,14 +361,22 @@ const PhotographerDetail: React.FC = () => {
     return <Navigate to="/" />;
   }
 
+  const volMap: Record<string, string> = {
+    'flynn-kohut': 'VOL I',
+    'paxton-hope': 'VOL II',
+    'aaleya-ganguly': 'VOL III',
+    'nico-bowers': 'VOL IV',
+    'gordon': 'VOL V'
+  };
+
   return (
     <div className="reveal w-full px-4 md:px-8 pb-24">
       <section className="max-w-5xl mx-auto mb-16 mt-8 text-center">
         <div className="mb-4">
-            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-3">Exeter Archive // {id === 'flynn-kohut' ? 'VOL I' : id === 'paxton-hope' ? 'VOL II' : id === 'aaleya-ganguly' ? 'VOL III' : 'VOL IV'}</span>
+            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-3">Exeter Archive // {volMap[id || ''] || 'COLLECTION'}</span>
             <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
               <span className="block">{photographer.name.split(' ')[0]}</span>
-              <span className="block">{photographer.name.split(' ')[1]}</span>
+              <span className="block">{photographer.name.split(' ')[1] || ''}</span>
             </h2>
         </div>
         
@@ -373,6 +446,7 @@ const App: React.FC = () => (
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/photographers" element={<PhotographersPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/photographer/:id" element={<PhotographerDetail />} />
