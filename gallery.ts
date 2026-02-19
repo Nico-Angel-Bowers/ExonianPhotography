@@ -1,10 +1,13 @@
+
+import { CollectionImage } from './types';
+
 /**
  * GALLERY ASSETS - THE JAZZ CAFE NIGHT COLLECTION
  * 
  * Curated and sequenced by Nico Bowers.
  */
 
-export const JAZZ_CAFE_IMAGES = [
+export const JAZZ_CAFE_IMAGES: CollectionImage[] = [
   {
     url: 'https://i.imgur.com/thZtuBX.jpeg',
     title: 'The Blue Note',
@@ -70,7 +73,7 @@ export const JAZZ_CAFE_IMAGES = [
   }
 ];
 
-export const TRAVEL_IMAGES = [
+export const TRAVEL_IMAGES: CollectionImage[] = [
   { url: 'https://i.imgur.com/bye48d9.jpeg', title: 'Arrival', description: 'Selected frame from the travel archive.', size: 'large', offset: 'none' },
   { url: 'https://i.imgur.com/zWQ7IKd.jpeg', title: 'Perspective', description: 'Selected frame from the travel archive.', size: 'medium', offset: 'none' },
   { url: 'https://i.imgur.com/oSahuMO.jpeg', title: 'Nuance', description: 'Selected frame from the travel archive.', size: 'medium', offset: 'none' },
@@ -84,4 +87,4 @@ export const TRAVEL_IMAGES = [
   { url: 'https://i.imgur.com/69QXHyA.jpeg', title: 'Depart', description: 'Selected frame from the travel archive.', size: 'small', offset: 'none' }
 ];
 
-export const OTHER_WORKS = [];
+export const OTHER_WORKS: CollectionImage[] = [];

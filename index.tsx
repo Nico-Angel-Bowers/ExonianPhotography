@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import { HashRouter, Routes, Route, Link, useLocation, useParams, Navigate } from 'react-router-dom';
@@ -39,57 +40,57 @@ interface Event {
 // --- Image Data Collections ---
 
 const NICO_BOWERS_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/thZtuBX.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/OSszIsd.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/7cTUn90.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/QB54ZGN.jpeg', title: '', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/miov8UT.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/9x8EKeN.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/1qjhaId.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/7ZpjSMX.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/4evqYe8.jpeg', title: '', description: '', size: 'small', offset: 'none' }
+  { url: 'https://i.imgur.com/thZtuBX.jpeg', title: 'The Blue Note', description: 'Capturing the deep, atmospheric hues of the opening set.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/OSszIsd.jpeg', title: 'Rhythm & Bloom', description: 'A study of movement and floral accents in the venue.', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/7cTUn90.jpeg', title: 'Intimate Echoes', description: 'The subtle resonance of the acoustics in a quiet corner.', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/QB54ZGN.jpeg', title: 'Brass Textures', description: 'Detailed focus on the instruments that define the night.', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/miov8UT.jpeg', title: 'The Collective Voice', description: 'Unity through improvisation and shared presence.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/9x8EKeN.jpeg', title: 'Shadow Play', description: 'Tracing the silhouettes against the stage lights.', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/1qjhaId.jpeg', title: 'Strings Attached', description: 'The delicate tension of a performance in progress.', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/7ZpjSMX.jpeg', title: 'Cafe Noir', description: 'High-contrast moments from the edge of the stage.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/4evqYe8.jpeg', title: 'The Final Set', description: 'A lasting impression as the lights begin to dim.', size: 'small', offset: 'none' }
 ];
 
 const TRAVEL_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/bye48d9.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/zWQ7IKd.jpeg', title: '', description: '', size: 'medium', offset: 'none' },
-  { url: 'https://i.imgur.com/oSahuMO.jpeg', title: '', description: '', size: 'medium', offset: 'none' },
-  { url: 'https://i.imgur.com/Vw09dIS.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/W3viqoi.jpeg', title: '', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/GqhL3gG.jpeg', title: '', description: '', size: 'medium', offset: 'none' },
-  { url: 'https://i.imgur.com/0PhEWzM.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/DPRx18r.jpeg', title: '', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/LGjBvuE.jpeg', title: '', description: '', size: 'medium', offset: 'none' },
-  { url: 'https://i.imgur.com/opD3zpa.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/69QXHyA.jpeg', title: '', description: '', size: 'small', offset: 'none' }
+  { url: 'https://i.imgur.com/bye48d9.jpeg', title: 'Arrival', description: 'Selected frame from the travel archive.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/zWQ7IKd.jpeg', title: 'Perspective', description: 'Selected frame from the travel archive.', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/oSahuMO.jpeg', title: 'Nuance', description: 'Selected frame from the travel archive.', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/Vw09dIS.jpeg', title: 'Scale', description: 'Selected frame from the travel archive.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/W3viqoi.jpeg', title: 'Texture', description: 'Selected frame from the travel archive.', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/GqhL3gG.jpeg', title: 'Distant', description: 'Selected frame from the travel archive.', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/0PhEWzM.jpeg', title: 'Immersion', description: 'Selected frame from the travel archive.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/DPRx18r.jpeg', title: 'Elements', description: 'Selected frame from the travel archive.', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/LGjBvuE.jpeg', title: 'Silence', description: 'Selected frame from the travel archive.', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/opD3zpa.jpeg', title: 'Horizon', description: 'Selected frame from the travel archive.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/69QXHyA.jpeg', title: 'Depart', description: 'Selected frame from the travel archive.', size: 'small', offset: 'none' }
 ];
 
 const PAXTON_HOPE_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/EvHoJPa.png', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/nI3GHU2.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/riQAZZX.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/zNiUkhz.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/zeKbpZD.jpeg', title: '', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/8W8N4Bf.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/yws7S0L.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/6r9vfwo.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/nAIEut2.jpeg', title: '', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/fFbzSUW.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/HdyVPeN.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/1GVxJDQ.jpeg', title: '', description: '', size: 'small', offset: 'none' }
+  { url: 'https://i.imgur.com/EvHoJPa.png', title: 'Archival 01', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/nI3GHU2.jpeg', title: 'Archival 02', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/riQAZZX.jpeg', title: 'Archival 03', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/zNiUkhz.jpeg', title: 'Archival 04', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/zeKbpZD.jpeg', title: 'Archival 05', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/8W8N4Bf.jpeg', title: 'Archival 06', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/yws7S0L.jpeg', title: 'Archival 07', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/6r9vfwo.jpeg', title: 'Archival 08', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/nAIEut2.jpeg', title: 'Archival 09', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/fFbzSUW.jpeg', title: 'Archival 10', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/HdyVPeN.jpeg', title: 'Archival 11', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/1GVxJDQ.jpeg', title: 'Archival 12', description: '', size: 'small', offset: 'none' }
 ];
 
 const FLYNN_KOHUT_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/ZAmV1aL.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/nUMubKh.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/c2DsJs0.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/ys6wNFG.jpeg', title: '', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/nz8SRth.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/T4tkbCW.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/cWFC5i7.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/pzRadjb.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/wtIIMNI.jpeg', title: '', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/ZxyzUZ8.jpeg', title: '', description: '', size: 'medium', offset: 'top' }
+  { url: 'https://i.imgur.com/ZAmV1aL.jpeg', title: 'Peace 01', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/nUMubKh.jpeg', title: 'Peace 02', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/c2DsJs0.jpeg', title: 'Peace 03', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/ys6wNFG.jpeg', title: 'Peace 04', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/nz8SRth.jpeg', title: 'Peace 05', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/T4tkbCW.jpeg', title: 'Peace 06', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/cWFC5i7.jpeg', title: 'Peace 07', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/pzRadjb.jpeg', title: 'Peace 08', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/wtIIMNI.jpeg', title: 'Peace 09', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/ZxyzUZ8.jpeg', title: 'Peace 10', description: '', size: 'medium', offset: 'top' }
 ];
 
 const AALEYA_GANGULY_IMAGES: CollectionImage[] = [
@@ -106,16 +107,16 @@ const AALEYA_GANGULY_IMAGES: CollectionImage[] = [
 ];
 
 const GORDON_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/H59aSOO.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/aaEKQHd.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/4wx4ZgW.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/SiR5G1X.jpeg', title: '', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/UTWmyqE.jpeg', title: '', description: '', size: 'medium', offset: 'none' },
-  { url: 'https://i.imgur.com/jeF24FH.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/3Js3ZIQ.jpeg', title: '', description: '', size: 'small', offset: 'none' },
-  { url: 'https://i.imgur.com/8thGFI9.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
-  { url: 'https://i.imgur.com/PLG11i4.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
-  { url: 'https://i.imgur.com/5Jtzghj.jpeg', title: '', description: '', size: 'large', offset: 'none' }
+  { url: 'https://i.imgur.com/H59aSOO.jpeg', title: 'Campus 01', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/aaEKQHd.jpeg', title: 'Campus 02', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/4wx4ZgW.jpeg', title: 'Campus 03', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/SiR5G1X.jpeg', title: 'Campus 04', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/UTWmyqE.jpeg', title: 'Campus 05', description: '', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/jeF24FH.jpeg', title: 'Campus 06', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/3Js3ZIQ.jpeg', title: 'Campus 07', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/8thGFI9.jpeg', title: 'Campus 08', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/PLG11i4.jpeg', title: 'Campus 09', description: 'Selected frame from the archive.', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/5Jtzghj.jpeg', title: 'Campus 10', description: 'Selected frame from the archive.', size: 'large', offset: 'none' }
 ];
 
 const FEATURED_PHOTOGRAPHERS: Photographer[] = [
@@ -132,7 +133,7 @@ const FEATURED_PHOTOGRAPHERS: Photographer[] = [
     name: 'Paxton Hope',
     description: 'An exploration of the ephemeral and the discarded.',
     profileImage: 'https://i.imgur.com/Jw3OYdG.jpeg',
-    portfolios: [{ id: 'archive', title: 'Archival Study', coverImage: 'https://i.imgur.com/EvHoJPa.png', images: PAXTON_HOPE_IMAGES }],
+    portfolios: [{ id: 'archive', title: 'Paxton Hope', coverImage: 'https://i.imgur.com/EvHoJPa.png', images: PAXTON_HOPE_IMAGES }],
     isFeatured: true
   },
   {
@@ -140,7 +141,7 @@ const FEATURED_PHOTOGRAPHERS: Photographer[] = [
     name: 'Aaleya Ganguly',
     description: 'A cinematic perspective on the mundane, capturing light and shadow in motion.',
     profileImage: 'https://i.imgur.com/fXY4l0G.png',
-    portfolios: [{ id: 'cinematic', title: 'Light & Motion', coverImage: 'https://i.imgur.com/QzsXnBW.jpeg', images: AALEYA_GANGULY_IMAGES }],
+    portfolios: [{ id: 'cinematic', title: 'Aaleya Ganguly', coverImage: 'https://i.imgur.com/QzsXnBW.jpeg', images: AALEYA_GANGULY_IMAGES }],
     isFeatured: true
   },
   {
@@ -305,45 +306,6 @@ const Home: React.FC = () => (
         ))}
       </div>
     </div>
-
-    <div className="w-full pb-24 px-8 border-t border-gray-50">
-      <div className="mb-12 space-y-2 pt-12 max-w-md mx-auto flex flex-col items-center justify-center">
-          <h2 className="text-[9px] font-medium uppercase tracking-[0.6em] text-gray-400 text-center">Recent Events</h2>
-          <div className="h-[1px] w-12 bg-black/10 mx-auto"></div>
-      </div>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto w-full">
-        {EVENTS.slice(0, 3).map((event) => (
-          <Link
-            key={event.id}
-            to={`/event/${event.id}`}
-            className="group w-full text-left flex flex-col"
-          >
-            <div className="relative w-full aspect-video overflow-hidden bg-gray-100 mb-6 shadow-sm group-hover:shadow-2xl transition-all duration-700">
-              <img 
-                src={event.coverImage} 
-                alt={event.title}
-                className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-[1.03]"
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-700"></div>
-              <div className="absolute bottom-6 left-6 text-white translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                 <span className="text-[8px] uppercase tracking-[0.4em] font-bold">Open Archive</span>
-              </div>
-            </div>
-            <div className="space-y-1">
-               <span className="text-[8px] uppercase tracking-[0.4em] text-gray-400 block">{event.date}</span>
-               <h3 className="text-2xl md:text-3xl serif italic text-gray-900 group-hover:text-black transition-colors">{event.title}</h3>
-            </div>
-          </Link>
-        ))}
-      </div>
-      
-      <div className="mt-16">
-        <Link to="/events" className="inline-block border-b border-black/10 pb-2 text-[9px] uppercase tracking-[0.4em] text-gray-400 hover:text-black hover:border-black transition-all">
-          View All Events
-        </Link>
-      </div>
-    </div>
   </section>
 );
 
@@ -380,118 +342,6 @@ const EventsPage: React.FC = () => (
   </section>
 );
 
-const EventDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const event = EVENTS.find(e => e.id === id);
-
-  if (!event) {
-    return <Navigate to="/events" />;
-  }
-
-  return (
-    <div className="reveal w-full px-4 md:px-8 pb-24">
-      <section className="max-w-5xl mx-auto mb-20 mt-12 text-center">
-        <div className="mb-6">
-            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-4">Event Archive // {event.date}</span>
-            <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-4 leading-[0.85] text-black">
-              {event.title}
-            </h2>
-            {event.photographerAttribution && (
-              <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-medium mt-4 italic">
-                {event.photographerAttribution}
-              </p>
-            )}
-            <div className="h-[1px] w-16 bg-black/10 mx-auto mt-12"></div>
-        </div>
-      </section>
-
-      <section className="space-y-40 mb-32 max-w-6xl mx-auto">
-        {event.images.map((image, index) => (
-          <div key={index} className="relative flex flex-col items-center w-full">
-            <div className="group relative flex items-center justify-center w-full bg-transparent">
-              <div className="relative overflow-hidden shadow-2xl shadow-black/10 bg-gray-50/50 flex items-center justify-center">
-                  <img 
-                    src={image.url} 
-                    alt={`Event Frame ${index + 1}`}
-                    loading="lazy"
-                    className="max-h-[82vh] w-auto max-w-full object-contain brightness-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.02]"
-                  />
-              </div>
-            </div>
-            <div className="mt-8 text-center w-full">
-              <div className="flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.6em] text-gray-300">
-                  <span className="font-bold text-black/20">Frame // 0{index + 1}</span>
-                  <div className="h-[1px] w-8 bg-gray-100"></div>
-                  <span className="opacity-40 font-medium">Archival Entry</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </section>
-
-      <div className="max-w-xl mx-auto text-center py-20 border-t border-gray-100">
-          <Link to="/events" className="inline-block border border-black/10 px-12 py-4 text-[9px] uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700">
-              Back to Events
-          </Link>
-      </div>
-    </div>
-  );
-};
-
-const PortfolioDetail: React.FC = () => {
-  const { id, portfolioId } = useParams<{ id: string, portfolioId: string }>();
-  const photographer = FEATURED_PHOTOGRAPHERS.find(p => p.id === id);
-  const portfolio = photographer?.portfolios.find(p => p.id === portfolioId);
-
-  if (!photographer || !portfolio) {
-    return <Navigate to={`/photographer/${id}`} />;
-  }
-
-  return (
-    <div className="reveal w-full px-4 md:px-8 pb-24">
-      <section className="max-w-5xl mx-auto mb-16 mt-8 text-center">
-        <div className="mb-4">
-            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-3">{photographer.name} // Portfolio</span>
-            <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
-              {portfolio.title}
-            </h2>
-        </div>
-        <div className="h-[1px] w-16 bg-black/10 mx-auto mt-8"></div>
-      </section>
-
-      <section className="space-y-32 mb-24 max-w-6xl mx-auto">
-        {portfolio.images.map((image, index) => (
-          <div key={index} className="relative flex flex-col items-center w-full">
-            <div className="group relative flex items-center justify-center w-full bg-transparent">
-              <div className="relative overflow-hidden shadow-2xl shadow-black/10 bg-gray-50/50 flex items-center justify-center">
-                  <img 
-                    src={image.url} 
-                    alt={`Portfolio Entry ${index + 1}`}
-                    loading="lazy"
-                    className="max-h-[82vh] w-auto max-w-full object-contain brightness-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.02]"
-                  />
-              </div>
-            </div>
-            <div className="mt-8 text-center w-full">
-              <div className="flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.6em] text-gray-300">
-                  <span className="font-bold text-black/20">Archive // 0{index + 1}</span>
-                  <div className="h-[1px] w-8 bg-gray-100"></div>
-                  <span className="opacity-40 font-medium">Archival Selection</span>
-              </div>
-            </div>
-          </div>
-        ))}
-      </section>
-
-      <div className="max-w-xl mx-auto text-center py-20 border-t border-gray-100">
-          <Link to={`/photographer/${id}`} className="inline-block border border-black/10 px-12 py-4 text-[9px] uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700">
-              Back to {photographer.name.split(' ')[0]}'s Page
-          </Link>
-      </div>
-    </div>
-  );
-};
-
 const PhotographerDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
   const photographer = FEATURED_PHOTOGRAPHERS.find(p => p.id === id);
@@ -499,8 +349,6 @@ const PhotographerDetail: React.FC = () => {
   if (!photographer) {
     return <Navigate to="/" />;
   }
-
-  const photographerEvents = EVENTS.filter(e => e.photographerAttribution?.includes(photographer.name));
 
   return (
     <div className="reveal w-full px-4 md:px-8 pb-24">
@@ -518,7 +366,6 @@ const PhotographerDetail: React.FC = () => {
         <div className="h-[1px] w-16 bg-black/10 mx-auto mt-12"></div>
       </section>
 
-      {/* Portfolios Section */}
       <section className="max-w-6xl mx-auto mb-24 px-4">
         <div className="mb-12 text-left">
            <h3 className="text-[10px] uppercase tracking-[0.6em] text-gray-400 font-bold mb-4">Portfolios</h3>
@@ -541,38 +388,6 @@ const PhotographerDetail: React.FC = () => {
         </div>
       </section>
 
-      {/* Events Section */}
-      {photographerEvents.length > 0 && (
-        <section className="max-w-6xl mx-auto mb-24 px-4 border-t border-gray-50 pt-16">
-          <div className="mb-12 text-left">
-             <h3 className="text-[10px] uppercase tracking-[0.6em] text-gray-400 font-bold mb-4">Events</h3>
-             <div className="h-[1px] w-12 bg-black/20"></div>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            {photographerEvents.map((event) => (
-              <Link
-                key={event.id}
-                to={`/event/${event.id}`}
-                className="group w-full text-left flex flex-col"
-              >
-                <div className="relative w-full aspect-video overflow-hidden bg-gray-100 mb-6 shadow-sm group-hover:shadow-2xl transition-all duration-700">
-                  <img 
-                    src={event.coverImage} 
-                    alt={event.title}
-                    className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-[1.03]"
-                  />
-                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-700"></div>
-                </div>
-                <div className="space-y-1">
-                   <span className="text-[8px] uppercase tracking-[0.4em] text-gray-400 block">{event.date}</span>
-                   <h3 className="text-2xl serif italic text-gray-900 group-hover:text-black transition-colors">{event.title}</h3>
-                </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
-
       <section className="max-w-3xl mx-auto text-center py-20 border-t border-gray-100 mt-24">
           <div className="space-y-4">
             <h3 className="text-2xl md:text-3xl serif italic mb-6">Inquiries & Correspondence</h3>
@@ -583,6 +398,138 @@ const PhotographerDetail: React.FC = () => {
             </div>
           </div>
       </section>
+    </div>
+  );
+};
+
+// --- Added EventDetail Component ---
+const EventDetail: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const event = EVENTS.find(e => e.id === id);
+
+  if (!event) {
+    return <Navigate to="/events" />;
+  }
+
+  return (
+    <div className="reveal w-full px-4 md:px-8 pb-24">
+      <section className="max-w-5xl mx-auto mb-24 mt-8 text-center">
+        <div className="mb-4">
+            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-3">Event Archive // {event.date}</span>
+            <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
+              {event.title}
+            </h2>
+            {event.photographerAttribution && (
+              <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400 mt-4">{event.photographerAttribution}</p>
+            )}
+        </div>
+        <div className="h-[1px] w-16 bg-black/10 mx-auto mt-8"></div>
+      </section>
+
+      <section className="space-y-32 md:space-y-48 mb-24 max-w-6xl mx-auto px-4">
+        {event.images.map((image, index) => {
+          const containerClasses = `relative flex flex-col ${
+            image.size === 'large' ? 'md:w-full' : 
+            image.size === 'medium' ? 'md:w-2/3 mx-auto' : 
+            'md:w-1/2 mx-auto'
+          } ${
+            image.offset === 'top' ? 'md:-mt-24' : 
+            image.offset === 'bottom' ? 'md:mt-24' : ''
+          } ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'}`;
+
+          return (
+            <div key={index} className={containerClasses}>
+              <div className="group relative overflow-hidden bg-gray-100 w-full shadow-2xl shadow-black/5 dark:shadow-white/5">
+                <img 
+                  src={image.url} 
+                  loading="lazy"
+                  className="w-full h-auto grayscale brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:grayscale-0 group-hover:scale-[1.04]" 
+                  alt={image.title} 
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/60 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-100">
+                  <h4 className="text-white text-lg serif italic mb-1">{image.title}</h4>
+                  <p className="text-white/70 text-[10px] uppercase tracking-widest">{image.description}</p>
+                </div>
+              </div>
+              <div className={`mt-6 max-w-xs ${index % 2 === 0 ? 'text-left' : 'text-right md:ml-auto'}`}>
+                <span className="text-[9px] uppercase tracking-[0.5em] text-gray-300 dark:text-gray-600 block mb-2">Plate // 00{index + 1}</span>
+                <p className="text-xs text-gray-400 dark:text-gray-500 font-light uppercase tracking-widest">{image.title || 'Untitled'}</p>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      <div className="max-w-xl mx-auto text-center py-20 border-t border-gray-100">
+          <Link to="/events" className="inline-block border border-black/10 px-12 py-4 text-[9px] uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700">
+              Back to Events
+          </Link>
+      </div>
+    </div>
+  );
+};
+
+const PortfolioDetail: React.FC = () => {
+  const { id, portfolioId } = useParams<{ id: string, portfolioId: string }>();
+  const photographer = FEATURED_PHOTOGRAPHERS.find(p => p.id === id);
+  const portfolio = photographer?.portfolios.find(p => p.id === portfolioId);
+
+  if (!photographer || !portfolio) {
+    return <Navigate to={`/photographer/${id}`} />;
+  }
+
+  return (
+    <div className="reveal w-full px-4 md:px-8 pb-24">
+      <section className="max-w-5xl mx-auto mb-24 mt-8 text-center">
+        <div className="mb-4">
+            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-3">{photographer.name} // Archive</span>
+            <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
+              {portfolio.title}
+            </h2>
+        </div>
+        <div className="h-[1px] w-16 bg-black/10 mx-auto mt-8"></div>
+      </section>
+
+      {/* Editorial Grid System (Staggered Layout) */}
+      <section className="space-y-32 md:space-y-48 mb-24 max-w-6xl mx-auto px-4">
+        {portfolio.images.map((image, index) => {
+          const containerClasses = `relative flex flex-col ${
+            image.size === 'large' ? 'md:w-full' : 
+            image.size === 'medium' ? 'md:w-2/3 mx-auto' : 
+            'md:w-1/2 mx-auto'
+          } ${
+            image.offset === 'top' ? 'md:-mt-24' : 
+            image.offset === 'bottom' ? 'md:mt-24' : ''
+          } ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'}`;
+
+          return (
+            <div key={index} className={containerClasses}>
+              <div className="group relative overflow-hidden bg-gray-100 w-full shadow-2xl shadow-black/5 dark:shadow-white/5">
+                <img 
+                  src={image.url} 
+                  loading="lazy"
+                  className="w-full h-auto grayscale brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:grayscale-0 group-hover:scale-[1.04]" 
+                  alt={image.title} 
+                />
+                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/60 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-100">
+                  <h4 className="text-white text-lg serif italic mb-1">{image.title}</h4>
+                  <p className="text-white/70 text-[10px] uppercase tracking-widest">{image.description}</p>
+                </div>
+              </div>
+              <div className={`mt-6 max-w-xs ${index % 2 === 0 ? 'text-left' : 'text-right md:ml-auto'}`}>
+                <span className="text-[9px] uppercase tracking-[0.5em] text-gray-300 dark:text-gray-600 block mb-2">Plate // 00{index + 1}</span>
+                <p className="text-xs text-gray-400 dark:text-gray-500 font-light uppercase tracking-widest">{image.title || 'Untitled'}</p>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      <div className="max-w-xl mx-auto text-center py-20 border-t border-gray-100">
+          <Link to={`/photographer/${id}`} className="inline-block border border-black/10 px-12 py-4 text-[9px] uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700">
+              Back to {photographer.name.split(' ')[0]}'s Page
+          </Link>
+      </div>
     </div>
   );
 };
@@ -625,13 +572,13 @@ const PhotographersPage: React.FC = () => (
 );
 
 const About: React.FC = () => (
-  <section className="max-w-3xl mx-auto px-8 reveal space-y-6 py-6 flex-grow flex flex-col justify-center">
-    <header className="text-center space-y-4">
+  <section className="max-w-3xl mx-auto px-8 reveal space-y-6 py-12 flex-grow flex flex-col justify-center text-center">
+    <header className="space-y-4">
         <h2 className="text-[9px] uppercase tracking-[0.6em] text-gray-300">Mission Statement</h2>
         <h3 className="text-4xl md:text-5xl serif italic text-gray-900">Exeter Photography</h3>
     </header>
 
-    <div className="text-xl md:text-2xl leading-[1.7] text-gray-500 font-light text-center serif italic max-w-2xl mx-auto">
+    <div className="text-xl md:text-2xl leading-[1.7] text-gray-500 font-light italic serif max-w-2xl mx-auto">
       <p>
         Exeter Photography is an archive for students around the world to share the world through their own lenses. 
         Based in <span className="text-black font-normal not-italic">Exeter, New Hampshire</span>, this collection is made special by the students who contribute to it!
@@ -641,7 +588,7 @@ const About: React.FC = () => (
 );
 
 const Contact: React.FC = () => (
-  <section className="max-w-2xl mx-auto px-8 reveal text-center py-6 flex-grow flex flex-col justify-center">
+  <section className="max-w-2xl mx-auto px-8 reveal text-center py-12 flex-grow flex flex-col justify-center">
     <div className="mb-8">
         <h3 className="text-4xl md:text-5xl serif italic text-gray-900">Contact Nico Bowers</h3>
     </div>
