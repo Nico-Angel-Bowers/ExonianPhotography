@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { NAV_ITEMS } from '../constants';
@@ -11,7 +10,7 @@ const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
       <header className="py-12 px-8 sticky top-0 bg-[#fcfcfc]/90 backdrop-blur-md z-50 border-b border-gray-50">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
           <Link to="/" className="group">
-            <h1 className="text-2xl font-light uppercase tracking-[0.5em] transition-all group-hover:opacity-50">
+            <h1 className="text-2xl font-light uppercase tracking-[0.5em] transition-all group-hover:opacity-50 text-black">
               Nico Bowers
             </h1>
             <div className="h-[1px] w-0 bg-black group-hover:w-full transition-all duration-700"></div>

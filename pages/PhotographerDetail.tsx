@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { FEATURED_PHOTOGRAPHERS } from '../constants';
@@ -20,7 +19,7 @@ const PhotographerDetail: React.FC = () => {
     <div className="reveal">
       {/* Editorial Header */}
       <section className="max-w-4xl mx-auto mb-32 text-center">
-        <h2 className="text-5xl md:text-8xl font-light uppercase tracking-[-0.05em] mb-8 leading-tight">
+        <h2 className="text-5xl md:text-8xl font-light uppercase tracking-[-0.05em] mb-8 leading-tight text-black">
           {photographer.name}
         </h2>
         
@@ -29,10 +28,6 @@ const PhotographerDetail: React.FC = () => {
             <span className="text-[10px] uppercase tracking-[0.4em] font-medium text-gray-500">Selected Archive</span>
             <span className="h-[1px] w-8 bg-black"></span>
         </div>
-
-        <p className="text-lg md:text-xl leading-relaxed text-gray-600 font-light max-w-2xl mx-auto italic serif">
-          "{photographer.description}"
-        </p>
       </section>
 
       {/* Editorial Grid System */}
@@ -54,20 +49,8 @@ const PhotographerDetail: React.FC = () => {
                 <img 
                   src={image.url} 
                   alt={image.title}
-                  className="w-full h-auto grayscale brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:grayscale-0 group-hover:scale-[1.04]"
+                  className="w-full h-auto brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]"
                 />
-                
-                {/* Information Overlay */}
-                <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/60 to-transparent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-700 delay-100">
-                  <h4 className="text-white text-lg serif italic mb-1">{image.title}</h4>
-                  <p className="text-white/70 text-[10px] uppercase tracking-widest">{image.description}</p>
-                </div>
-              </div>
-
-              {/* Minimal caption outside the image */}
-              <div className={`mt-6 max-w-xs ${index % 2 === 0 ? 'text-left' : 'text-right md:ml-auto'}`}>
-                <span className="text-[9px] uppercase tracking-[0.5em] text-gray-300 block mb-2">Plate // 00{index + 1}</span>
-                <p className="text-xs text-gray-400 font-light uppercase tracking-widest">{image.title}</p>
               </div>
             </div>
           );

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { FEATURED_PHOTOGRAPHERS } from '../constants';
@@ -6,7 +5,7 @@ import { FEATURED_PHOTOGRAPHERS } from '../constants';
 const Home: React.FC = () => {
   return (
     <section className="text-center">
-      <h2 className="text-lg md:text-2xl font-light uppercase letter-spacing-wide mb-12 md:mb-20">
+      <h2 className="text-lg md:text-2xl font-light uppercase letter-spacing-wide mb-12 md:mb-20 text-black">
         This Month’s Featured Photographers
       </h2>
 
