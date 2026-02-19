@@ -1,4 +1,3 @@
-
 /**
  * GALLERY ASSETS - THE JAZZ CAFE NIGHT COLLECTION
  * 
@@ -7,7 +6,7 @@
 
 export const JAZZ_CAFE_IMAGES = [
   {
-    url: 'https://i.imgur.com/1ty6NW1.jpeg',
+    url: 'https://i.imgur.com/thZtuBX.jpeg',
     title: 'The Blue Note',
     description: 'Capturing the deep, atmospheric hues of the opening set.',
     size: 'large',
@@ -69,6 +68,20 @@ export const JAZZ_CAFE_IMAGES = [
     size: 'small',
     offset: 'none'
   }
+];
+
+export const TRAVEL_IMAGES = [
+  { url: 'https://i.imgur.com/bye48d9.jpeg', title: 'Arrival', description: 'Selected frame from the travel archive.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/zWQ7IKd.jpeg', title: 'Perspective', description: 'Selected frame from the travel archive.', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/oSahuMO.jpeg', title: 'Nuance', description: 'Selected frame from the travel archive.', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/Vw09dIS.jpeg', title: 'Scale', description: 'Selected frame from the travel archive.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/W3viqoi.jpeg', title: 'Texture', description: 'Selected frame from the travel archive.', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/GqhL3gG.jpeg', title: 'Distant', description: 'Selected frame from the travel archive.', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/0PhEWzM.jpeg', title: 'Immersion', description: 'Selected frame from the travel archive.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/DPRx18r.jpeg', title: 'Elements', description: 'Selected frame from the travel archive.', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/LGjBvuE.jpeg', title: 'Silence', description: 'Selected frame from the travel archive.', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/opD3zpa.jpeg', title: 'Horizon', description: 'Selected frame from the travel archive.', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/69QXHyA.jpeg', title: 'Depart', description: 'Selected frame from the travel archive.', size: 'small', offset: 'none' }
 ];
 
 export const OTHER_WORKS = [];

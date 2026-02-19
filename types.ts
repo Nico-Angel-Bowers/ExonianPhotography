@@ -7,19 +7,22 @@ export interface CollectionImage {
   offset: 'none' | 'top' | 'bottom';
 }
 
-export interface Collection {
-  name: string;
-  images: string[];
+export interface Portfolio {
+  id: string;
+  title: string;
+  coverImage: string;
+  images: CollectionImage[];
 }
 
+// Fix: Added isPlaceholder and made profileImage and portfolios optional to support placeholder photographers
 export interface Photographer {
   id: string;
   name: string;
   description: string;
-  isPlaceholder?: boolean;
   profileImage?: string;
-  works?: string[];
-  collections?: Collection[];
+  portfolios?: Portfolio[];
+  isFeatured?: boolean;
+  isPlaceholder?: boolean;
 }
 
 export interface NavItem {

@@ -11,13 +11,19 @@ interface CollectionImage {
   offset: 'none' | 'top' | 'bottom';
 }
 
+interface Portfolio {
+  id: string;
+  title: string;
+  coverImage: string;
+  images: CollectionImage[];
+}
+
 interface Photographer {
   id: string;
   name: string;
   description: string;
-  collectionTitle: string;
   profileImage: string;
-  images: CollectionImage[];
+  portfolios: Portfolio[];
   isFeatured?: boolean;
 }
 
@@ -33,7 +39,7 @@ interface Event {
 // --- Image Data Collections ---
 
 const NICO_BOWERS_IMAGES: CollectionImage[] = [
-  { url: 'https://i.imgur.com/1ty6NW1.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/thZtuBX.jpeg', title: '', description: '', size: 'large', offset: 'none' },
   { url: 'https://i.imgur.com/OSszIsd.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
   { url: 'https://i.imgur.com/7cTUn90.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
   { url: 'https://i.imgur.com/QB54ZGN.jpeg', title: '', description: '', size: 'small', offset: 'none' },
@@ -42,6 +48,20 @@ const NICO_BOWERS_IMAGES: CollectionImage[] = [
   { url: 'https://i.imgur.com/1qjhaId.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
   { url: 'https://i.imgur.com/7ZpjSMX.jpeg', title: '', description: '', size: 'large', offset: 'none' },
   { url: 'https://i.imgur.com/4evqYe8.jpeg', title: '', description: '', size: 'small', offset: 'none' }
+];
+
+const TRAVEL_IMAGES: CollectionImage[] = [
+  { url: 'https://i.imgur.com/bye48d9.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/zWQ7IKd.jpeg', title: '', description: '', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/oSahuMO.jpeg', title: '', description: '', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/Vw09dIS.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/W3viqoi.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/GqhL3gG.jpeg', title: '', description: '', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/0PhEWzM.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/DPRx18r.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/LGjBvuE.jpeg', title: '', description: '', size: 'medium', offset: 'none' },
+  { url: 'https://i.imgur.com/opD3zpa.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/69QXHyA.jpeg', title: '', description: '', size: 'small', offset: 'none' }
 ];
 
 const PAXTON_HOPE_IMAGES: CollectionImage[] = [
@@ -103,45 +123,43 @@ const FEATURED_PHOTOGRAPHERS: Photographer[] = [
     id: 'flynn-kohut',
     name: 'Flynn Kohut',
     description: 'Scenes that demand a pause, finding profound peace in a world of hate.',
-    collectionTitle: 'Peace in a World of Hate',
     profileImage: 'https://i.imgur.com/de5Jzhw.png',
-    images: FLYNN_KOHUT_IMAGES,
+    portfolios: [{ id: 'peace', title: 'Peace in a World of Hate', coverImage: 'https://i.imgur.com/ZAmV1aL.jpeg', images: FLYNN_KOHUT_IMAGES }],
     isFeatured: true
   },
   {
     id: 'paxton-hope',
     name: 'Paxton Hope',
     description: 'An exploration of the ephemeral and the discarded.',
-    collectionTitle: '',
     profileImage: 'https://i.imgur.com/Jw3OYdG.jpeg',
-    images: PAXTON_HOPE_IMAGES,
+    portfolios: [{ id: 'archive', title: 'Archival Study', coverImage: 'https://i.imgur.com/EvHoJPa.png', images: PAXTON_HOPE_IMAGES }],
     isFeatured: true
   },
   {
     id: 'aaleya-ganguly',
     name: 'Aaleya Ganguly',
     description: 'A cinematic perspective on the mundane, capturing light and shadow in motion.',
-    collectionTitle: '',
     profileImage: 'https://i.imgur.com/fXY4l0G.png',
-    images: AALEYA_GANGULY_IMAGES,
+    portfolios: [{ id: 'cinematic', title: 'Light & Motion', coverImage: 'https://i.imgur.com/QzsXnBW.jpeg', images: AALEYA_GANGULY_IMAGES }],
     isFeatured: true
   },
   {
     id: 'nico-bowers',
     name: 'Nico Bowers',
     description: 'Focused on creating calm, intentional images that emphasize atmosphere, composition, and honesty.',
-    collectionTitle: 'Jazz Cafe Night',
     profileImage: 'https://i.imgur.com/RYXwCGo.jpeg',
-    images: NICO_BOWERS_IMAGES,
+    portfolios: [
+      { id: 'jazz-cafe-night', title: 'Jazz Cafe Night', coverImage: 'https://i.imgur.com/thZtuBX.jpeg', images: NICO_BOWERS_IMAGES },
+      { id: 'travel', title: 'Travel', coverImage: 'https://i.imgur.com/bye48d9.jpeg', images: TRAVEL_IMAGES }
+    ],
     isFeatured: true
   },
   {
     id: 'gordon',
     name: 'Gordon Wiafe',
     description: 'Capturing the raw essence of campus life and architectural nuances.',
-    collectionTitle: '',
     profileImage: 'https://i.imgur.com/iHOcEM2.png',
-    images: GORDON_IMAGES,
+    portfolios: [{ id: 'campus', title: 'Campus Archive', coverImage: 'https://i.imgur.com/H59aSOO.jpeg', images: GORDON_IMAGES }],
     isFeatured: false
   }
 ];
@@ -151,7 +169,7 @@ const EVENTS: Event[] = [
     id: 'jazz-cafe',
     title: 'Jazz Cafe',
     date: 'January 2026',
-    coverImage: 'https://i.imgur.com/1ty6NW1.jpeg',
+    coverImage: 'https://i.imgur.com/thZtuBX.jpeg',
     images: NICO_BOWERS_IMAGES,
     photographerAttribution: 'taken by Nico Bowers'
   }
@@ -261,7 +279,6 @@ const Home: React.FC = () => (
       </div>
     </div>
 
-    {/* Monthly Photographers Section */}
     <div className="w-full pb-16 px-8">
       <div className="mb-10 space-y-2 pt-6 border-t border-gray-100 max-w-md mx-auto flex flex-col items-center justify-center">
           <h2 className="text-[9px] font-medium uppercase tracking-[0.6em] text-gray-400 text-center">This month's photographers</h2>
@@ -289,7 +306,6 @@ const Home: React.FC = () => (
       </div>
     </div>
 
-    {/* Recent Events Section */}
     <div className="w-full pb-24 px-8 border-t border-gray-50">
       <div className="mb-12 space-y-2 pt-12 max-w-md mx-auto flex flex-col items-center justify-center">
           <h2 className="text-[9px] font-medium uppercase tracking-[0.6em] text-gray-400 text-center">Recent Events</h2>
@@ -422,6 +438,155 @@ const EventDetail: React.FC = () => {
   );
 };
 
+const PortfolioDetail: React.FC = () => {
+  const { id, portfolioId } = useParams<{ id: string, portfolioId: string }>();
+  const photographer = FEATURED_PHOTOGRAPHERS.find(p => p.id === id);
+  const portfolio = photographer?.portfolios.find(p => p.id === portfolioId);
+
+  if (!photographer || !portfolio) {
+    return <Navigate to={`/photographer/${id}`} />;
+  }
+
+  return (
+    <div className="reveal w-full px-4 md:px-8 pb-24">
+      <section className="max-w-5xl mx-auto mb-16 mt-8 text-center">
+        <div className="mb-4">
+            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-3">{photographer.name} // Portfolio</span>
+            <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
+              {portfolio.title}
+            </h2>
+        </div>
+        <div className="h-[1px] w-16 bg-black/10 mx-auto mt-8"></div>
+      </section>
+
+      <section className="space-y-32 mb-24 max-w-6xl mx-auto">
+        {portfolio.images.map((image, index) => (
+          <div key={index} className="relative flex flex-col items-center w-full">
+            <div className="group relative flex items-center justify-center w-full bg-transparent">
+              <div className="relative overflow-hidden shadow-2xl shadow-black/10 bg-gray-50/50 flex items-center justify-center">
+                  <img 
+                    src={image.url} 
+                    alt={`Portfolio Entry ${index + 1}`}
+                    loading="lazy"
+                    className="max-h-[82vh] w-auto max-w-full object-contain brightness-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.02]"
+                  />
+              </div>
+            </div>
+            <div className="mt-8 text-center w-full">
+              <div className="flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.6em] text-gray-300">
+                  <span className="font-bold text-black/20">Archive // 0{index + 1}</span>
+                  <div className="h-[1px] w-8 bg-gray-100"></div>
+                  <span className="opacity-40 font-medium">Archival Selection</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <div className="max-w-xl mx-auto text-center py-20 border-t border-gray-100">
+          <Link to={`/photographer/${id}`} className="inline-block border border-black/10 px-12 py-4 text-[9px] uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700">
+              Back to {photographer.name.split(' ')[0]}'s Page
+          </Link>
+      </div>
+    </div>
+  );
+};
+
+const PhotographerDetail: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const photographer = FEATURED_PHOTOGRAPHERS.find(p => p.id === id);
+
+  if (!photographer) {
+    return <Navigate to="/" />;
+  }
+
+  const photographerEvents = EVENTS.filter(e => e.photographerAttribution?.includes(photographer.name));
+
+  return (
+    <div className="reveal w-full px-4 md:px-8 pb-24">
+      <section className="max-w-5xl mx-auto mb-16 mt-12 text-center">
+        <div className="mb-4">
+            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-4">Registry // Photographer</span>
+            <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-6 leading-[0.85] text-black">
+              <span className="block">{photographer.name.split(' ')[0]}</span>
+              <span className="block">{photographer.name.split(' ')[1] || ''}</span>
+            </h2>
+        </div>
+        <p className="text-xl md:text-2xl leading-relaxed text-gray-500 font-light max-w-2xl mx-auto italic serif mb-12">
+          {photographer.description}
+        </p>
+        <div className="h-[1px] w-16 bg-black/10 mx-auto mt-12"></div>
+      </section>
+
+      {/* Portfolios Section */}
+      <section className="max-w-6xl mx-auto mb-24 px-4">
+        <div className="mb-12 text-left">
+           <h3 className="text-[10px] uppercase tracking-[0.6em] text-gray-400 font-bold mb-4">Portfolios</h3>
+           <div className="h-[1px] w-12 bg-black/20"></div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+           {photographer.portfolios.map((portfolio) => (
+             <Link key={portfolio.id} to={`/photographer/${id}/portfolio/${portfolio.id}`} className="group block">
+                <div className="relative aspect-video overflow-hidden bg-gray-100 mb-6 shadow-sm group-hover:shadow-xl transition-all duration-700">
+                   <img 
+                     src={portfolio.coverImage} 
+                     alt={portfolio.title}
+                     className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-[1.02]"
+                   />
+                </div>
+                <h4 className="text-2xl md:text-3xl serif italic text-gray-900">{portfolio.title}</h4>
+                <span className="text-[9px] uppercase tracking-[0.4em] text-gray-400 block mt-1">View Portfolio</span>
+             </Link>
+           ))}
+        </div>
+      </section>
+
+      {/* Events Section */}
+      {photographerEvents.length > 0 && (
+        <section className="max-w-6xl mx-auto mb-24 px-4 border-t border-gray-50 pt-16">
+          <div className="mb-12 text-left">
+             <h3 className="text-[10px] uppercase tracking-[0.6em] text-gray-400 font-bold mb-4">Events</h3>
+             <div className="h-[1px] w-12 bg-black/20"></div>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            {photographerEvents.map((event) => (
+              <Link
+                key={event.id}
+                to={`/event/${event.id}`}
+                className="group w-full text-left flex flex-col"
+              >
+                <div className="relative w-full aspect-video overflow-hidden bg-gray-100 mb-6 shadow-sm group-hover:shadow-2xl transition-all duration-700">
+                  <img 
+                    src={event.coverImage} 
+                    alt={event.title}
+                    className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-[1.03]"
+                  />
+                  <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-700"></div>
+                </div>
+                <div className="space-y-1">
+                   <span className="text-[8px] uppercase tracking-[0.4em] text-gray-400 block">{event.date}</span>
+                   <h3 className="text-2xl serif italic text-gray-900 group-hover:text-black transition-colors">{event.title}</h3>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
+      <section className="max-w-3xl mx-auto text-center py-20 border-t border-gray-100 mt-24">
+          <div className="space-y-4">
+            <h3 className="text-2xl md:text-3xl serif italic mb-6">Inquiries & Correspondence</h3>
+            <div className="pt-2">
+                <Link to="/contact" className="inline-block border border-black/10 px-12 py-4 text-[10px] uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-1000 font-medium">
+                    Contact Nico Bowers
+                </Link>
+            </div>
+          </div>
+      </section>
+    </div>
+  );
+};
+
 const PhotographersPage: React.FC = () => (
   <section className="reveal w-full px-8 pb-24 flex flex-col items-center">
     <div className="max-w-4xl mx-auto mb-16 mt-12 text-center">
@@ -506,91 +671,6 @@ const Contact: React.FC = () => (
   </section>
 );
 
-const PhotographerDetail: React.FC = () => {
-  const { id } = useParams<{ id: string }>();
-  const photographer = FEATURED_PHOTOGRAPHERS.find(p => p.id === id);
-
-  if (!photographer) {
-    return <Navigate to="/" />;
-  }
-
-  const volMap: Record<string, string> = {
-    'flynn-kohut': 'VOL I',
-    'paxton-hope': 'VOL II',
-    'aaleya-ganguly': 'VOL III',
-    'nico-bowers': 'VOL IV',
-    'gordon': 'VOL V'
-  };
-
-  return (
-    <div className="reveal w-full px-4 md:px-8 pb-24">
-      <section className="max-w-5xl mx-auto mb-16 mt-8 text-center">
-        <div className="mb-4">
-            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-3">Exeter Archive // {volMap[id || ''] || 'COLLECTION'}</span>
-            <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-2 leading-[0.85] text-black text-center">
-              <span className="block">{photographer.name.split(' ')[0]}</span>
-              <span className="block">{photographer.name.split(' ')[1] || ''}</span>
-            </h2>
-        </div>
-        
-        {photographer.collectionTitle && (
-          <div className="flex items-center justify-center gap-6 mb-4">
-              <div className="h-[1px] w-12 bg-black/10"></div>
-              <span className="text-[11px] uppercase tracking-[0.4em] font-medium text-gray-400 italic serif">{photographer.collectionTitle}</span>
-              <div className="h-[1px] w-12 bg-black/10"></div>
-          </div>
-        )}
-      </section>
-
-      {/* Grid Layout - Optimized so all photos fit on screen without excessive height */}
-      <section className="space-y-32 mb-24 max-w-6xl mx-auto">
-        {photographer.images.map((image, index) => {
-          return (
-            <div key={index} className="relative flex flex-col items-center w-full">
-              <div className="group relative flex items-center justify-center w-full bg-transparent">
-                <div className="relative overflow-hidden shadow-2xl shadow-black/10 bg-gray-50/50 flex items-center justify-center">
-                    <img 
-                      src={image.url} 
-                      alt={`Archival Entry ${index + 1}`}
-                      loading="lazy"
-                      className="max-h-[82vh] w-auto max-w-full object-contain brightness-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.02]"
-                    />
-                    
-                    {/* Discrete hover information */}
-                    <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-1000 flex items-end p-8 pointer-events-none">
-                       <div className="translate-y-2 group-hover:translate-y-0 transition-transform duration-[800ms] ease-out">
-                          <h4 className="text-white text-3xl serif italic drop-shadow-xl font-light">Entry 0{index + 1}</h4>
-                       </div>
-                    </div>
-                </div>
-              </div>
-
-              <div className="mt-8 text-center w-full">
-                <div className="flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.6em] text-gray-300">
-                    <span className="font-bold text-black/20">Archive // 0{index + 1}</span>
-                    <div className="h-[1px] w-8 bg-gray-100"></div>
-                    <span className="opacity-40 font-medium">Archival Selection</span>
-                </div>
-              </div>
-            </div>
-          );
-        })}
-      </section>
-
-      <section className="max-w-3xl mx-auto text-center py-20 border-t border-gray-100 mt-24">
-          <div className="space-y-4">
-            <h3 className="text-2xl md:text-3xl serif italic mb-6">Inquiries & Correspondence</h3>
-            <div className="pt-2">
-                <Link to="/contact" className="inline-block border border-black/10 px-12 py-4 text-[10px] uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-1000 font-medium">
-                    Contact Nico Bowers
-                </Link>
-            </div>
-          </div>
-      </section>
-    </div>
-  );
-};
-
 // --- App Root ---
 
 const App: React.FC = () => (
@@ -605,6 +685,7 @@ const App: React.FC = () => (
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/photographer/:id" element={<PhotographerDetail />} />
+        <Route path="/photographer/:id/portfolio/:portfolioId" element={<PortfolioDetail />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </Layout>
