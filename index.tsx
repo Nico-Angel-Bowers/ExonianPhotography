@@ -21,6 +21,15 @@ interface Photographer {
   isFeatured?: boolean;
 }
 
+interface Event {
+  id: string;
+  title: string;
+  date: string;
+  coverImage: string;
+  images: CollectionImage[];
+  photographerAttribution?: string;
+}
+
 // --- Image Data Collections ---
 
 const NICO_BOWERS_IMAGES: CollectionImage[] = [
@@ -137,8 +146,20 @@ const FEATURED_PHOTOGRAPHERS: Photographer[] = [
   }
 ];
 
+const EVENTS: Event[] = [
+  {
+    id: 'jazz-cafe',
+    title: 'Jazz Cafe',
+    date: 'January 2026',
+    coverImage: 'https://i.imgur.com/1ty6NW1.jpeg',
+    images: NICO_BOWERS_IMAGES,
+    photographerAttribution: 'taken by Nico Bowers'
+  }
+];
+
 const NAV_ITEMS = [
   { label: 'Home', path: '/' },
+  { label: 'Events', path: '/events' },
   { label: 'Photographers', path: '/photographers' },
   { label: 'About', path: '/about' },
   { label: 'Contact', path: '/contact' }
@@ -240,7 +261,8 @@ const Home: React.FC = () => (
       </div>
     </div>
 
-    <div className="w-full pb-12 px-8">
+    {/* Monthly Photographers Section */}
+    <div className="w-full pb-16 px-8">
       <div className="mb-10 space-y-2 pt-6 border-t border-gray-100 max-w-md mx-auto flex flex-col items-center justify-center">
           <h2 className="text-[9px] font-medium uppercase tracking-[0.6em] text-gray-400 text-center">This month's photographers</h2>
           <div className="h-[1px] w-12 bg-black/10 mx-auto"></div>
@@ -266,8 +288,139 @@ const Home: React.FC = () => (
         ))}
       </div>
     </div>
+
+    {/* Recent Events Section */}
+    <div className="w-full pb-24 px-8 border-t border-gray-50">
+      <div className="mb-12 space-y-2 pt-12 max-w-md mx-auto flex flex-col items-center justify-center">
+          <h2 className="text-[9px] font-medium uppercase tracking-[0.6em] text-gray-400 text-center">Recent Events</h2>
+          <div className="h-[1px] w-12 bg-black/10 mx-auto"></div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto w-full">
+        {EVENTS.slice(0, 3).map((event) => (
+          <Link
+            key={event.id}
+            to={`/event/${event.id}`}
+            className="group w-full text-left flex flex-col"
+          >
+            <div className="relative w-full aspect-video overflow-hidden bg-gray-100 mb-6 shadow-sm group-hover:shadow-2xl transition-all duration-700">
+              <img 
+                src={event.coverImage} 
+                alt={event.title}
+                className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-[1.03]"
+              />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-all duration-700"></div>
+              <div className="absolute bottom-6 left-6 text-white translate-y-2 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                 <span className="text-[8px] uppercase tracking-[0.4em] font-bold">Open Archive</span>
+              </div>
+            </div>
+            <div className="space-y-1">
+               <span className="text-[8px] uppercase tracking-[0.4em] text-gray-400 block">{event.date}</span>
+               <h3 className="text-2xl md:text-3xl serif italic text-gray-900 group-hover:text-black transition-colors">{event.title}</h3>
+            </div>
+          </Link>
+        ))}
+      </div>
+      
+      <div className="mt-16">
+        <Link to="/events" className="inline-block border-b border-black/10 pb-2 text-[9px] uppercase tracking-[0.4em] text-gray-400 hover:text-black hover:border-black transition-all">
+          View All Events
+        </Link>
+      </div>
+    </div>
   </section>
 );
+
+const EventsPage: React.FC = () => (
+  <section className="reveal w-full px-8 pb-24 flex flex-col items-center">
+    <div className="max-w-4xl mx-auto mb-16 mt-12 text-center">
+      <h2 className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-4">The Archive</h2>
+      <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-6 text-black">Events</h3>
+      <div className="h-[1px] w-24 bg-black/10 mx-auto"></div>
+    </div>
+
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-16 max-w-6xl mx-auto w-full">
+      {EVENTS.map((event) => (
+        <Link
+          key={event.id}
+          to={`/event/${event.id}`}
+          className="group w-full text-left flex flex-col"
+        >
+          <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-100 mb-8 shadow-sm group-hover:shadow-2xl transition-all duration-700">
+            <img 
+              src={event.coverImage} 
+              alt={event.title}
+              className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-[1.02]"
+            />
+            <div className="absolute inset-0 bg-black/5 group-hover:bg-black/0 transition-all duration-700"></div>
+          </div>
+          <div className="space-y-2">
+             <span className="text-[9px] uppercase tracking-[0.4em] text-gray-400 block font-medium">{event.date}</span>
+             <h3 className="text-3xl md:text-5xl serif italic text-gray-900 group-hover:text-black transition-colors leading-tight">{event.title}</h3>
+          </div>
+        </Link>
+      ))}
+    </div>
+  </section>
+);
+
+const EventDetail: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const event = EVENTS.find(e => e.id === id);
+
+  if (!event) {
+    return <Navigate to="/events" />;
+  }
+
+  return (
+    <div className="reveal w-full px-4 md:px-8 pb-24">
+      <section className="max-w-5xl mx-auto mb-20 mt-12 text-center">
+        <div className="mb-6">
+            <span className="text-[9px] uppercase tracking-[0.8em] text-gray-300 block mb-4">Event Archive // {event.date}</span>
+            <h2 className="text-6xl md:text-[8rem] font-light uppercase tracking-tighter mb-4 leading-[0.85] text-black">
+              {event.title}
+            </h2>
+            {event.photographerAttribution && (
+              <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400 font-medium mt-4 italic">
+                {event.photographerAttribution}
+              </p>
+            )}
+            <div className="h-[1px] w-16 bg-black/10 mx-auto mt-12"></div>
+        </div>
+      </section>
+
+      <section className="space-y-40 mb-32 max-w-6xl mx-auto">
+        {event.images.map((image, index) => (
+          <div key={index} className="relative flex flex-col items-center w-full">
+            <div className="group relative flex items-center justify-center w-full bg-transparent">
+              <div className="relative overflow-hidden shadow-2xl shadow-black/10 bg-gray-50/50 flex items-center justify-center">
+                  <img 
+                    src={image.url} 
+                    alt={`Event Frame ${index + 1}`}
+                    loading="lazy"
+                    className="max-h-[82vh] w-auto max-w-full object-contain brightness-[1.01] transition-all duration-[2000ms] cubic-bezier(0.19, 1, 0.22, 1) group-hover:scale-[1.02]"
+                  />
+              </div>
+            </div>
+            <div className="mt-8 text-center w-full">
+              <div className="flex items-center justify-center gap-4 text-[9px] uppercase tracking-[0.6em] text-gray-300">
+                  <span className="font-bold text-black/20">Frame // 0{index + 1}</span>
+                  <div className="h-[1px] w-8 bg-gray-100"></div>
+                  <span className="opacity-40 font-medium">Archival Entry</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </section>
+
+      <div className="max-w-xl mx-auto text-center py-20 border-t border-gray-100">
+          <Link to="/events" className="inline-block border border-black/10 px-12 py-4 text-[9px] uppercase tracking-[0.4em] hover:bg-black hover:text-white transition-all duration-700">
+              Back to Events
+          </Link>
+      </div>
+    </div>
+  );
+};
 
 const PhotographersPage: React.FC = () => (
   <section className="reveal w-full px-8 pb-24 flex flex-col items-center">
@@ -446,6 +599,8 @@ const App: React.FC = () => (
     <Layout>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/events" element={<EventsPage />} />
+        <Route path="/event/:id" element={<EventDetail />} />
         <Route path="/photographers" element={<PhotographersPage />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
