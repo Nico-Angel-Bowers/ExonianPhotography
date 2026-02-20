@@ -160,7 +160,7 @@ const FEATURED_PHOTOGRAPHERS: Photographer[] = [
     name: 'Gordon Wiafe',
     description: '',
     profileImage: 'https://i.imgur.com/iHOcEM2.png',
-    portfolios: [{ id: 'campus', title: 'Campus Archive', coverImage: 'https://i.imgur.com/H59aSOO.jpeg', images: GORDON_IMAGES }],
+    portfolios: [{ id: 'campus', title: 'Gordon Wiafe', coverImage: 'https://i.imgur.com/H59aSOO.jpeg', images: GORDON_IMAGES }],
     isFeatured: false
   }
 ];
@@ -218,7 +218,7 @@ const Layout: React.FC<{ children: React.ReactNode; isDark: boolean; toggleDark:
 
   return (
     <div className={`min-h-screen flex flex-col transition-colors duration-700 ${isDark ? 'dark bg-[#121212]' : 'bg-[#fcfcfc]'}`}>
-      <header className="py-4 px-8 sticky top-0 bg-inherit/95 backdrop-blur-md z-50 border-b border-gray-100/50 dark:border-white/5">
+      <header className="py-4 px-4 md:px-8 sticky top-0 bg-inherit/95 backdrop-blur-md z-50 border-b border-gray-100/50 dark:border-white/5">
         <div className="max-w-screen-xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2 md:gap-4 relative">
           
           <div className={`flex flex-col md:flex-row items-center gap-4 ${isHome ? 'md:flex-1' : ''}`}>
@@ -265,7 +265,7 @@ const Layout: React.FC<{ children: React.ReactNode; isDark: boolean; toggleDark:
         </div>
       </main>
 
-      <footer className="py-12 px-8 border-t border-gray-50 dark:border-white/5 text-center bg-inherit">
+      <footer className="py-12 px-4 md:px-8 border-t border-gray-50 dark:border-white/5 text-center bg-inherit">
         <div className="max-w-screen-sm mx-auto space-y-4">
           <div className="space-y-1">
             <p className="text-[10px] uppercase tracking-[0.4em] text-gray-400 dark:text-gray-600 font-medium">Exeter • NH</p>
@@ -305,7 +305,7 @@ const Home: React.FC = () => (
       </div>
     </div>
 
-    <div className="w-full pb-16 px-8">
+    <div className="w-full pb-16 px-4 md:px-8">
       <div className="mb-10 space-y-2 pt-6 border-t border-gray-100 dark:border-white/5 max-w-md mx-auto flex flex-col items-center justify-center">
           <h2 className="text-[9px] font-medium uppercase tracking-[0.6em] text-black dark:text-gray-600 text-center">This month's photographers</h2>
           <div className="h-[1px] w-12 bg-black/10 dark:bg-white/10 mx-auto"></div>
@@ -335,7 +335,7 @@ const Home: React.FC = () => (
 );
 
 const EventsPage: React.FC = () => (
-  <section className="reveal w-full px-8 pb-24 flex flex-col items-center">
+  <section className="reveal w-full px-4 md:px-8 pb-24 flex flex-col items-center">
     <div className="max-w-4xl mx-auto mb-16 mt-12 text-center">
       <h2 className="text-[9px] uppercase tracking-[0.8em] text-black dark:text-gray-700 block mb-4">The Archive</h2>
       <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-6 text-black dark:text-white">Events</h3>
@@ -347,7 +347,7 @@ const EventsPage: React.FC = () => (
         <Link
           key={event.id}
           to={`/event/${event.id}`}
-          className="group w-full text-left flex flex-col"
+          className="group w-full text-center md:text-left flex flex-col"
         >
           <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-8 shadow-sm group-hover:shadow-2xl transition-all duration-700">
             <img 
@@ -389,13 +389,13 @@ const PhotographerDetail: React.FC = () => {
       </section>
 
       <section className="max-w-6xl mx-auto mb-24 px-4">
-        <div className="mb-12 text-left">
+        <div className="mb-12 text-center md:text-left">
            <h3 className="text-[10px] uppercase tracking-[0.6em] text-black dark:text-gray-600 font-bold mb-4">Portfolios</h3>
-           <div className="h-[1px] w-12 bg-black/20 dark:bg-white/10"></div>
+           <div className="h-[1px] w-12 bg-black/20 dark:bg-white/10 mx-auto md:mx-0"></div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
            {photographer.portfolios.map((portfolio) => (
-             <Link key={portfolio.id} to={`/photographer/${id}/portfolio/${portfolio.id}`} className="group block">
+             <Link key={portfolio.id} to={`/photographer/${id}/portfolio/${portfolio.id}`} className="group block text-center md:text-left">
                 <div className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900 mb-6 shadow-sm group-hover:shadow-xl transition-all duration-700">
                    <img 
                      src={portfolio.coverImage} 
@@ -460,11 +460,11 @@ const EventDetail: React.FC = () => {
 
           return (
             <div key={index} className={containerClasses}>
-              <div className="group relative overflow-hidden bg-gray-100 dark:bg-gray-900 w-full shadow-2xl shadow-black/5 dark:shadow-white/5">
+              <div className="group relative overflow-hidden bg-gray-100 dark:bg-gray-900 w-full shadow-2xl shadow-black/5 dark:shadow-white/5 flex justify-center items-center">
                 <img 
                   src={image.url} 
                   loading="lazy"
-                  className="w-full h-auto brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]" 
+                  className="w-auto h-auto max-w-full max-h-[85vh] mx-auto block brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]" 
                   alt="" 
                 />
               </div>
@@ -517,11 +517,11 @@ const PortfolioDetail: React.FC = () => {
 
           return (
             <div key={index} className={containerClasses}>
-              <div className="group relative overflow-hidden bg-gray-100 dark:bg-gray-900 w-full shadow-2xl shadow-black/5 dark:shadow-white/5">
+              <div className="group relative overflow-hidden bg-gray-100 dark:bg-gray-900 w-full shadow-2xl shadow-black/5 dark:shadow-white/5 flex justify-center items-center">
                 <img 
                   src={image.url} 
                   loading="lazy"
-                  className="w-full h-auto brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]" 
+                  className="w-auto h-auto max-w-full max-h-[85vh] mx-auto block brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]" 
                   alt="" 
                 />
               </div>
@@ -540,7 +540,7 @@ const PortfolioDetail: React.FC = () => {
 };
 
 const PhotographersPage: React.FC = () => (
-  <section className="reveal w-full px-8 pb-24 flex flex-col items-center">
+  <section className="reveal w-full px-4 md:px-8 pb-24 flex flex-col items-center">
     <div className="max-w-4xl mx-auto mb-16 mt-12 text-center">
       <h2 className="text-[9px] uppercase tracking-[0.8em] text-black dark:text-gray-700 block mb-4">Registry</h2>
       <h3 className="text-5xl md:text-7xl font-light uppercase tracking-tighter mb-6 text-black dark:text-white">Photographers</h3>
@@ -626,7 +626,7 @@ const Contact: React.FC = () => (
 // --- App Root ---
 
 const App: React.FC = () => {
-  const [isDark, setIsDark] = useState(false);
+  const [isDark, setIsDark] = useState(true);
 
   useEffect(() => {
     if (isDark) {
