@@ -106,6 +106,20 @@ const AALEYA_GANGULY_IMAGES: CollectionImage[] = [
   { url: 'https://i.imgur.com/aA6nhov.jpeg', title: '', description: '', size: 'medium', offset: 'none' }
 ];
 
+const PHILADELPHIA_ART_SHOW_IMAGES: CollectionImage[] = [
+  { url: 'https://i.imgur.com/YkeNk2H.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/ZWsJuqo.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/04YKmL8.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/A915byn.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/jobYiPH.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/jHJ1drC.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/sKTp4yV.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/y80eAKp.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/7gj9TjF.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/FKbGFUY.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/zgaghcp.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' }
+];
+
 const GORDON_IMAGES: CollectionImage[] = [
   { url: 'https://i.imgur.com/H59aSOO.jpeg', title: '', description: '', size: 'large', offset: 'none' },
   { url: 'https://i.imgur.com/aaEKQHd.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
@@ -141,7 +155,10 @@ const FEATURED_PHOTOGRAPHERS: Photographer[] = [
     name: 'Aaleya Ganguly',
     description: '',
     profileImage: 'https://i.imgur.com/fXY4l0G.png',
-    portfolios: [{ id: 'cinematic', title: 'Aaleya Ganguly', coverImage: 'https://i.imgur.com/QzsXnBW.jpeg', images: AALEYA_GANGULY_IMAGES }],
+    portfolios: [
+      { id: 'cinematic', title: 'Aaleya Ganguly', coverImage: 'https://i.imgur.com/QzsXnBW.jpeg', images: AALEYA_GANGULY_IMAGES },
+      { id: 'philadelphia-art-show', title: 'Philadelphia Art Show 2026', coverImage: 'https://i.imgur.com/YkeNk2H.jpeg', images: PHILADELPHIA_ART_SHOW_IMAGES }
+    ],
     isFeatured: true
   },
   {
@@ -320,6 +337,7 @@ const Home: React.FC = () => (
           >
             <div className="relative w-full aspect-[4/5] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4 shadow-sm group-hover:shadow-xl transition-all duration-700">
               <img 
+                referrerPolicy="no-referrer"
                 src={photographer.profileImage} 
                 alt={photographer.name}
                 className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
@@ -351,6 +369,7 @@ const EventsPage: React.FC = () => (
         >
           <div className="relative w-full aspect-[16/10] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-8 shadow-sm group-hover:shadow-2xl transition-all duration-700">
             <img 
+              referrerPolicy="no-referrer"
               src={event.coverImage} 
               alt={event.title}
               className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-[1.02]"
@@ -398,6 +417,7 @@ const PhotographerDetail: React.FC = () => {
              <Link key={portfolio.id} to={`/photographer/${id}/portfolio/${portfolio.id}`} className="group block text-center md:text-left">
                 <div className="relative aspect-video overflow-hidden bg-gray-100 dark:bg-gray-900 mb-6 shadow-sm group-hover:shadow-xl transition-all duration-700">
                    <img 
+                     referrerPolicy="no-referrer"
                      src={portfolio.coverImage} 
                      alt={portfolio.title}
                      className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-[1.02]"
@@ -462,6 +482,7 @@ const EventDetail: React.FC = () => {
             <div key={index} className={containerClasses}>
               <div className="group relative overflow-hidden bg-gray-100 dark:bg-gray-900 w-full shadow-2xl shadow-black/5 dark:shadow-white/5 flex justify-center items-center">
                 <img 
+                  referrerPolicy="no-referrer"
                   src={image.url} 
                   loading="lazy"
                   className="w-auto h-auto max-w-full max-h-[85vh] mx-auto block brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]" 
@@ -519,6 +540,7 @@ const PortfolioDetail: React.FC = () => {
             <div key={index} className={containerClasses}>
               <div className="group relative overflow-hidden bg-gray-100 dark:bg-gray-900 w-full shadow-2xl shadow-black/5 dark:shadow-white/5 flex justify-center items-center">
                 <img 
+                  referrerPolicy="no-referrer"
                   src={image.url} 
                   loading="lazy"
                   className="w-auto h-auto max-w-full max-h-[85vh] mx-auto block brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]" 
@@ -556,6 +578,7 @@ const PhotographersPage: React.FC = () => (
         >
           <div className="relative w-full aspect-[4/5] overflow-hidden bg-gray-100 dark:bg-gray-900 mb-4 shadow-sm group-hover:shadow-xl transition-all duration-700">
             <img 
+              referrerPolicy="no-referrer"
               src={photographer.profileImage} 
               alt={photographer.name}
               className="w-full h-full object-cover grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"

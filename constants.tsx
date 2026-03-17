@@ -1,5 +1,5 @@
 import { Photographer } from './types';
-import { JAZZ_CAFE_IMAGES } from './gallery';
+import { JAZZ_CAFE_IMAGES, PHILADELPHIA_ART_SHOW_IMAGES } from './gallery';
 
 export const FEATURED_PHOTOGRAPHERS: Photographer[] = [
   {
@@ -13,6 +13,21 @@ export const FEATURED_PHOTOGRAPHERS: Photographer[] = [
         title: 'Jazz Cafe collection',
         coverImage: JAZZ_CAFE_IMAGES[0].url,
         images: JAZZ_CAFE_IMAGES
+      }
+    ],
+    isFeatured: true
+  },
+  {
+    id: 'aaleya-ganguly',
+    name: 'Aaleya Ganguly',
+    description: '',
+    profileImage: PHILADELPHIA_ART_SHOW_IMAGES[0].url,
+    portfolios: [
+      {
+        id: 'philadelphia-art-show',
+        title: 'Philadelphia Art Show 2026',
+        coverImage: PHILADELPHIA_ART_SHOW_IMAGES[0].url,
+        images: PHILADELPHIA_ART_SHOW_IMAGES
       }
     ],
     isFeatured: true

@@ -1,7 +1,6 @@
 import React from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { FEATURED_PHOTOGRAPHERS } from '../constants';
-import { JAZZ_CAFE_IMAGES } from '../gallery';
 
 const PhotographerDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -11,9 +10,8 @@ const PhotographerDetail: React.FC = () => {
     return <Navigate to="/" />;
   }
 
-  // We use JAZZ_CAFE_IMAGES metadata directly for Nico to enable the editorial layout
-  const isNico = id === 'nico-bowers';
-  const displayImages = isNico ? JAZZ_CAFE_IMAGES : [];
+  const portfolios = photographer.portfolios || [];
+  const hasImages = portfolios.length > 0 && portfolios.some(p => p.images.length > 0);
 
   return (
     <div className="reveal">
@@ -31,34 +29,44 @@ const PhotographerDetail: React.FC = () => {
       </section>
 
       {/* Editorial Grid System */}
-      <section className="space-y-32 mb-40">
-        {displayImages.map((image, index) => {
-          // Dynamic classes based on size and offset
-          const containerClasses = `relative flex flex-col ${
-            image.size === 'large' ? 'md:w-full' : 
-            image.size === 'medium' ? 'md:w-2/3 mx-auto' : 
-            'md:w-1/2 mx-auto'
-          } ${
-            image.offset === 'top' ? 'md:-mt-24' : 
-            image.offset === 'bottom' ? 'md:mt-24' : ''
-          } ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'}`;
-
-          return (
-            <div key={index} className={containerClasses}>
-              <div className="group relative overflow-hidden bg-gray-100 w-full shadow-2xl shadow-black/5">
-                <img 
-                  src={image.url} 
-                  alt={image.title}
-                  className="w-full h-auto brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]"
-                />
-              </div>
+      <div className="space-y-40 mb-40">
+        {portfolios.map((portfolio) => (
+          <section key={portfolio.id} className="space-y-32">
+            <div className="text-center mb-20">
+              <h3 className="text-2xl md:text-4xl font-light uppercase tracking-widest text-black">
+                {portfolio.title}
+              </h3>
             </div>
-          );
-        })}
-      </section>
+            {portfolio.images.map((image, index) => {
+              // Dynamic classes based on size and offset
+              const containerClasses = `relative flex flex-col ${
+                image.size === 'large' ? 'md:w-full' : 
+                image.size === 'medium' ? 'md:w-2/3 mx-auto' : 
+                'md:w-1/2 mx-auto'
+              } ${
+                image.offset === 'top' ? 'md:-mt-24' : 
+                image.offset === 'bottom' ? 'md:mt-24' : ''
+              } ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'}`;
+
+              return (
+                <div key={index} className={containerClasses}>
+                  <div className="group relative overflow-hidden bg-gray-100 w-full shadow-2xl shadow-black/5">
+                    <img 
+                      src={image.url} 
+                      alt={image.title}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-auto brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]"
+                    />
+                  </div>
+                </div>
+              );
+            })}
+          </section>
+        ))}
+      </div>
 
       {/* Placeholder for others */}
-      {!isNico && (
+      {!hasImages && (
         <div className="text-center py-40 border-y border-gray-100">
           <p className="text-xs uppercase tracking-[1em] text-gray-300">Awaiting Entry</p>
         </div>

@@ -87,3 +87,17 @@ export const TRAVEL_IMAGES: CollectionImage[] = [
 ];
 
 export const OTHER_WORKS: CollectionImage[] = [];
+
+export const PHILADELPHIA_ART_SHOW_IMAGES: CollectionImage[] = [
+  { url: 'https://i.imgur.com/YkeNk2H.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/ZWsJuqo.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/04YKmL8.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/A915byn.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/jobYiPH.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/jHJ1drC.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/sKTp4yV.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/y80eAKp.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/7gj9TjF.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/FKbGFUY.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/zgaghcp.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' }
+];
