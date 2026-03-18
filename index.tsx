@@ -77,7 +77,14 @@ const PAXTON_HOPE_IMAGES: CollectionImage[] = [
   { url: 'https://i.imgur.com/nAIEut2.jpeg', title: '', description: '', size: 'small', offset: 'none' },
   { url: 'https://i.imgur.com/fFbzSUW.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
   { url: 'https://i.imgur.com/HdyVPeN.jpeg', title: '', description: '', size: 'large', offset: 'none' },
-  { url: 'https://i.imgur.com/1GVxJDQ.jpeg', title: '', description: '', size: 'small', offset: 'none' }
+  { url: 'https://i.imgur.com/1GVxJDQ.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/LtnJCYJ.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/fTpU6aS.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/XQ0xMBi.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' },
+  { url: 'https://i.imgur.com/u4M1vCL.jpeg', title: '', description: '', size: 'small', offset: 'none' },
+  { url: 'https://i.imgur.com/EXmOCuJ.jpeg', title: '', description: '', size: 'large', offset: 'none' },
+  { url: 'https://i.imgur.com/SePEnEf.jpeg', title: '', description: '', size: 'medium', offset: 'top' },
+  { url: 'https://i.imgur.com/mmj2YoP.jpeg', title: '', description: '', size: 'medium', offset: 'bottom' }
 ];
 
 const FLYNN_KOHUT_IMAGES: CollectionImage[] = [
@@ -469,23 +476,16 @@ const EventDetail: React.FC = () => {
 
       <section className="space-y-32 md:space-y-48 mb-24 max-w-6xl mx-auto px-4">
         {event.images.map((image, index) => {
-          const containerClasses = `relative flex flex-col ${
-            image.size === 'large' ? 'md:w-full' : 
-            image.size === 'medium' ? 'md:w-2/3 mx-auto' : 
-            'md:w-1/2 mx-auto'
-          } ${
-            image.offset === 'top' ? 'md:-mt-24' : 
-            image.offset === 'bottom' ? 'md:mt-24' : ''
-          } ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'}`;
+          const containerClasses = `relative flex flex-col items-center w-full mx-auto`;
 
           return (
             <div key={index} className={containerClasses}>
-              <div className="group relative overflow-hidden bg-gray-100 dark:bg-gray-900 w-full shadow-2xl shadow-black/5 dark:shadow-white/5 flex justify-center items-center">
+              <div className="group relative overflow-hidden bg-gray-100 dark:bg-gray-900 shadow-2xl shadow-black/5 dark:shadow-white/5 w-fit mx-auto">
                 <img 
                   referrerPolicy="no-referrer"
                   src={image.url} 
                   loading="lazy"
-                  className="w-auto h-auto max-w-full max-h-[85vh] mx-auto block brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]" 
+                  className="w-auto h-auto max-w-full max-h-[85vh] block brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]" 
                   alt="" 
                 />
               </div>
@@ -524,26 +524,19 @@ const PortfolioDetail: React.FC = () => {
         <div className="h-[1px] w-16 bg-black/10 dark:bg-white/10 mx-auto mt-8"></div>
       </section>
 
-      {/* Editorial Grid System (Staggered Layout) */}
+      {/* Editorial Grid System */}
       <section className="space-y-32 md:space-y-48 mb-24 max-w-6xl mx-auto px-4">
         {portfolio.images.map((image, index) => {
-          const containerClasses = `relative flex flex-col ${
-            image.size === 'large' ? 'md:w-full' : 
-            image.size === 'medium' ? 'md:w-2/3 mx-auto' : 
-            'md:w-1/2 mx-auto'
-          } ${
-            image.offset === 'top' ? 'md:-mt-24' : 
-            image.offset === 'bottom' ? 'md:mt-24' : ''
-          } ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'}`;
+          const containerClasses = `relative flex flex-col items-center w-full mx-auto`;
 
           return (
             <div key={index} className={containerClasses}>
-              <div className="group relative overflow-hidden bg-gray-100 dark:bg-gray-900 w-full shadow-2xl shadow-black/5 dark:shadow-white/5 flex justify-center items-center">
+              <div className="group relative overflow-hidden bg-gray-100 dark:bg-gray-900 shadow-2xl shadow-black/5 dark:shadow-white/5 w-fit mx-auto">
                 <img 
                   referrerPolicy="no-referrer"
                   src={image.url} 
                   loading="lazy"
-                  className="w-auto h-auto max-w-full max-h-[85vh] mx-auto block brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]" 
+                  className="w-auto h-auto max-w-full max-h-[85vh] block brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]" 
                   alt="" 
                 />
               </div>

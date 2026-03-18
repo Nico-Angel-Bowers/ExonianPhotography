@@ -38,24 +38,16 @@ const PhotographerDetail: React.FC = () => {
               </h3>
             </div>
             {portfolio.images.map((image, index) => {
-              // Dynamic classes based on size and offset
-              const containerClasses = `relative flex flex-col ${
-                image.size === 'large' ? 'md:w-full' : 
-                image.size === 'medium' ? 'md:w-2/3 mx-auto' : 
-                'md:w-1/2 mx-auto'
-              } ${
-                image.offset === 'top' ? 'md:-mt-24' : 
-                image.offset === 'bottom' ? 'md:mt-24' : ''
-              } ${index % 2 === 0 ? 'md:items-start' : 'md:items-end'}`;
+              const containerClasses = `relative flex flex-col items-center w-full mx-auto`;
 
               return (
                 <div key={index} className={containerClasses}>
-                  <div className="group relative overflow-hidden bg-gray-100 w-full shadow-2xl shadow-black/5">
+                  <div className="group relative overflow-hidden bg-gray-100 shadow-2xl shadow-black/5 w-fit mx-auto">
                     <img 
                       src={image.url} 
                       alt={image.title}
                       referrerPolicy="no-referrer"
-                      className="w-full h-auto brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]"
+                      className="w-auto h-auto max-w-full max-h-[85vh] block brightness-[1.05] contrast-[1.02] transition-all duration-[2000ms] cubic-bezier(0.16, 1, 0.3, 1) group-hover:scale-[1.04]"
                     />
                   </div>
                 </div>
